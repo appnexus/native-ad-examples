@@ -1,0 +1,404 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta charset="utf-8">
+		<title>AppNexus Native Gallery</title>
+		<meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no"/>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+
+			body {
+				font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+				font-size: 16px;
+				max-width: 960px;
+				margin: 0 auto;
+			}
+
+			footer {
+				margin: 5px 0;
+			}
+
+			.page-header {
+				padding: 55px;
+			}
+
+			.page-header h1 {
+				text-align: center
+			}
+
+			.native-gallery-item {
+				margin: 34px 0;
+				padding-bottom: 22px;
+				border-bottom: 1px solid #999;
+				display: flex;
+				flex-flow: row wrap;
+			}
+
+			.native-gallery-item:last-of-type {
+				border-bottom: 0;
+			}
+
+			.native-gallery-item h2 {
+				margin-bottom: 21px;
+				width: 100%;
+				flex: 1 100%;
+			}
+
+			.native-gallery-rendering-sample {
+				flex: 1;
+				margin-right: 8px;
+				padding: 5px;
+				border: 1px solid #999;
+			}
+
+			.native-gallery-code-section {
+				flex: 1;
+				display: flex;
+			}
+
+			.native-gallery-code-snippet {
+				position: relative;
+				flex: 1;
+			}
+
+			.native-gallery-code-block {
+				position: absolute;
+				resize: none;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				width: 100%;
+				font-family: monospace;
+				font-size: 0.8em;
+				outline: none;
+				padding: 5px;
+				background: #f9f9f9;
+			}
+
+			.native-gallery-copy-btn {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				font-size: 16px;
+				padding: 3px;
+				border: 1px solid #000;
+				background-color: #eee;
+				cursor: pointer;
+			}
+
+			.native-gallery-copy-btn:hover {
+				background-color: #fff;
+			}
+
+			/** ad unit styles **/
+
+			.an-native-ad {
+				display: block;
+			}
+
+			.an-native-headline {
+				font-weight: bold;
+				font-size: 1.3em;
+			}
+
+			.an-native-sponsor-wrapper {
+				font-size: 0.8em;
+			}
+
+			.an-native-sponsor-label {
+				font-weight: bold;
+			}
+
+			.an-native-ad .an-native-cta {
+				text-decoration: none;
+				padding: 3px;
+				color: #000;
+				background: #fff;
+				border: 1px solid #000;
+				font-size: 1.2em;
+			}
+
+			.an-native-ad .an-native-body {
+				margin: 5px 0;
+			}
+
+			/* vanilla left-floated image */
+
+			.an-native-ad.img-left .an-native-img {
+				float: left;
+				margin-right: 5px;
+			}
+
+			/* overlayed image styles */
+
+			.an-native-ad.img-overlay {
+				position: relative;
+			}
+
+			.an-native-overlay-content {
+				position: absolute;
+				color: #fff;
+				width: 320px;
+				top: 0;
+				bottom: 0;
+			}
+
+			.an-native-overlay-content .an-native-logo {
+				position: absolute;
+				bottom: 5px;
+				right: 3px;
+			}
+
+			.an-native-overlay-content .an-native-headline {
+				position: absolute;
+				text-align: center;
+				top: 13px;
+				left: 0;
+				right: 0;
+			}
+
+			.an-native-overlay-content .an-native-sponsor-wrapper {
+				position: absolute;
+				bottom: 5px;
+				left: 3px;
+			}
+
+			.an-native-overlay-content .an-native-cta {
+				position: absolute;
+				bottom: 25%;
+				left: 60px;
+				right: 60px;
+				opacity: 0.7;
+				border: 0;
+				text-align: center;
+			}
+
+			.an-native-overlay-content .an-native-cta:hover {
+				opacity: 1.0;
+			}
+
+			/* stacked content */
+
+			.an-native-ad.stacked {
+				max-width: 200px;
+			} 
+		</style>
+	</head>
+	<body>
+		<header class='page-header'>
+			<h1>Native Ad Gallery</h1>
+		</header>
+		<article>
+			This is a gallery of sample native creative renderings - these are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native creative response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content.
+		</article>
+		<!-- repeatable content -->
+		<article class='native-gallery-item'>
+			<h2>Main image, headline, sponsor</h2>
+			<section class='native-gallery-rendering-sample'>
+				<div class='an-native-ad img-left'>
+					<a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>
+						<img class='an-native-img' src='./assets/placeholder.jpg' width='160' height='120' />
+					</a>
+					<div class='an-native-rhs'>
+						<header class='an-native-headline'>Welcome Thrillho!</header>
+						<div class='an-native-sponsor-wrapper'>
+							<span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class='native-gallery-code-section'>
+				<div class='native-gallery-code-snippet'>
+					<textarea class='native-gallery-code-block' readonly>(function() {
+    function() {
+      return "is the key to the waiting room";
+    }
+})();</textarea>
+					<button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+						Copy
+					</button>
+				</div>
+			</section>
+		</article>
+		<!-- repeatable content -->
+		<article class='native-gallery-item'>
+			<h2>Main image, headline, logo, call to action, sponsor</h2>
+			<section class='native-gallery-rendering-sample'>
+				<div class='an-native-ad img-overlay'>
+					<div class='an-native-overlay-content'>
+						<header class='an-native-headline'>Welcome Thrillho!</header>
+						<div class='an-native-sponsor-wrapper'>
+							<span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+						</div>
+						<a href='https://frinkiac.com/episode/S07E11/123339' class='an-native-cta' target='_blank' title='...or go to hell!'>
+							Buy me Bonestorm!
+						</a>
+						<img class='an-native-logo' src='./assets/logo.png' width='80px'/>
+					</div>
+					<img class='an-native-img' src='./assets/placeholder.jpg' width='320' height='240' />
+				</div>
+			</section>
+			<section class='native-gallery-code-section'>
+				<div class='native-gallery-code-snippet'>
+					<textarea class='native-gallery-code-block' readonly>(function() {
+    function() {
+      return "is the key to the waiting room";
+    }
+})();</textarea>
+					<button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+						Copy
+					</button>
+				</div>
+			</section>
+		</article>
+		<!-- repeatable content -->
+		<article class='native-gallery-item'>
+			<h2>Main image, video, headline, sponsor</h2>
+			<section class='native-gallery-rendering-sample'>
+				<div class='an-native-ad img-left'>
+					<!--<a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>-->
+						<!-- <img class='an-native-img' src='./assets/placeholder.jpg' width='160' height='120' /> -->
+						<!-- replace with a video at some point -->
+						<video class='an-native-img' src='./assets/sample-video.webm' poster='./assets/placeholder.jpg' width='160' height='120' autoplay loop></video>
+					<!--</a>-->
+					<div class='an-native-rhs'>
+						<header class='an-native-headline'>Welcome Thrillho!</header>
+						<div class='an-native-sponsor-wrapper'>
+							<span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class='native-gallery-code-section'>
+				<div class='native-gallery-code-snippet'>
+					<textarea class='native-gallery-code-block' readonly>(function() {
+    function() {
+      return "is the key to the waiting room";
+    }
+})();</textarea>
+					<button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+						Copy
+					</button>
+				</div>
+			</section>
+		</article>
+		<!-- repeatable content -->
+		<article class='native-gallery-item'>
+			<h2>Main image, video, headline, sponsor</h2>
+			<section class='native-gallery-rendering-sample'>
+				<div class='an-native-ad stacked'>
+					<video class='an-native-img' src='./assets/sample-video.webm' poster='./assets/placeholder.jpg' width='200' height='150' controls loop></video>
+					<header class='an-native-headline'>Welcome Thrillho!</header>
+					<div class='an-native-body'>
+						This is great! And all I've done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it's only a one-player game. How come it says 'second player score'?
+					</div>
+					<div class='an-native-sponsor-wrapper'>
+						<span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+					</div>
+				</div>
+			</section>
+			<section class='native-gallery-code-section'>
+				<div class='native-gallery-code-snippet'>
+					<textarea class='native-gallery-code-block' readonly>(function() {
+    function() {
+      return "is the key to the waiting room";
+    }
+})();</textarea>
+					<button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+						Copy
+					</button>
+				</div>
+			</section>
+		</article>
+		<!-- repeatable content -->
+		<article class='native-gallery-item'>
+			<h2>Main image, headline, body, sponsor</h2>
+			<section class='native-gallery-rendering-sample'>
+				<div class='an-native-ad stacked'>
+					<img class='an-native-img' src='./assets/placeholder.jpg' width='200' height='150' />
+					<header class='an-native-headline'>Welcome Thrillho!</header>
+					<div class='an-native-body'>
+						This is great! And all I've done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it's only a one-player game. How come it says 'second player score'?
+					</div>
+					<div class='an-native-sponsor-wrapper'>
+						<span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+					</div>
+				</div>
+			</section>
+			<section class='native-gallery-code-section'>
+				<div class='native-gallery-code-snippet'>
+					<textarea class='native-gallery-code-block' readonly>(function() {
+    function() {
+      return "is the key to the waiting room";
+    }
+})();</textarea>
+					<button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+						Copy
+					</button>
+				</div>
+			</section>
+		</article>
+		<!-- repeatable content -->
+		<article class='native-gallery-item'>
+			<h2>Headline, body, sponsor</h2>
+			<section class='native-gallery-rendering-sample'>
+				<div class='an-native-ad stacked'>
+					<header class='an-native-headline'>Welcome Thrillho!</header>
+					<div class='an-native-body'>
+						This is great! And all I've done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it's only a one-player game. How come it says 'second player score'?
+					</div>
+					<div class='an-native-sponsor-wrapper'>
+						<span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+					</div>
+				</div>
+			</section>
+			<section class='native-gallery-code-section'>
+				<div class='native-gallery-code-snippet'>
+					<textarea class='native-gallery-code-block' readonly>(function() {
+    function() {
+      return "is the key to the waiting room";
+    }
+})();</textarea>
+					<button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+						Copy
+					</button>
+				</div>
+			</section>
+		</article>
+		<footer>
+			&copy; 2017 AppNexus Inc. All Rights Reserved
+		</footer>
+		<script>
+			function locateTextArea(button) {
+				return button.previousElementSibling;
+			}
+
+			function copyContentToClipboard(textarea) {
+				textarea.select();
+
+				try {
+					var success = document.execCommand('copy');
+					console.log('Copy to clipboard', success ? 'successful' : 'unsuccessful');
+				} catch(error) {
+					console.error('There was an issue copying to clipboard', error);
+				}
+
+				window.getSelection().removeAllRanges();
+			}
+
+			document.addEventListener('DOMContentLoaded', function() {
+				document.querySelectorAll('.native-gallery-copy-btn').forEach(function(button) {
+					button.addEventListener('click', function(e) {
+						copyContentToClipboard(locateTextArea(e.target));
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
