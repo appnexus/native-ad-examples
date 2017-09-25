@@ -1,0 +1,20 @@
+{
+  "name": "native-gallery",
+  "version": "0.0.0",
+  "description": "## How to make the gallery happen:",
+  "main": "scripts/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node scripts/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appnexus/native-ad-examples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appnexus/native-ad-examples/issues"
+  },
+  "homepage": "https://github.com/appnexus/native-ad-examples#readme"
+}
