@@ -1,11 +1,11 @@
-<div class="an-native-ad img-left">
+<div class="an-native-ad img-left" {{stylr style.ad.root}}>
     <a href="{{clickUrl}}" target="_blank">
-        <img class="an-native-img" src="{{imgSrc}}" width="160" height="120" />
+        <img class="an-native-img" src="{{imgSrc}}" width="200" height="150" {{stylr style.imgLeft.img}}/>
     </a>
-    <div class="an-natie-rhs">
-        <header class="an-native-headline">{{title}}</header>
-        <div class="an-native-sponsor-wrapper">
-            <span class="an-native-sponsor-label">Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
+    <div class="an-native-rhs">
+        <header class="an-native-headline" {{stylr style.headline}}>{{title}}</header>
+        <div class="an-native-sponsor-wrapper" {{stylr style.sponsorWrapper}}>
+            <span class="an-native-sponsor-label" {{stylr style.sponsorLabel}}> Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
         </div>
     </div>
 </div>

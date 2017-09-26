@@ -1,13 +1,22 @@
-<div class="an-native-ad img-overlay">
-    <div class="an-native-overlay-content">
-        <header class="an-native-headline">{{title}}</header>
-        <div class="an-native-sponsor-wrapper">
-            <span class="an-native-sponsor-label">Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
+<div class="an-native-ad img-overlay" {{stylr style.ad.root style.ad.imgOverlay}}>
+    <div class="an-native-overlay-content" {{stylr style.overlayContent.root}}>
+        <header class="an-native-headline" {{stylr style.headline style.overlayContent.headline}}>{{title}}</header>
+        <div class="an-native-sponsor-wrapper" {{stylr style.sponsorWrapper style.overlayContent.sponsorWrapper}}>
+            <span class="an-native-sponsor-label" {{stylr style.sponsorLabel}}>Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
         </div>
-        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!">
+        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" {{stylr style.cta style.overlayContent.cta}}>
             {{ctaText}}
         </a>
-        <img class="an-native-logo" src="{{iconSrc}}" width="80px"/>
+        <img class="an-native-logo" src="{{iconSrc}}" width="80px" {{stylr style.overlayContent.logo}} />
     </div>
     <img class="an-native-img" src="{{imgSrc}}" width="320" height="240" />
 </div>
+<style>
+    {{!-- because inline styles don't allow psuedo selections --}}
+    .an-native-overlay-content .an-native-cta {
+        opacity: 0.7;
+    }
+    .an-native-overlay-content .an-native-cta:hover {
+        opacity: 1.0;
+    }
+</style>

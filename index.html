@@ -54,7 +54,6 @@
                 flex: 1;
                 margin-right: 8px;
                 padding: 5px;
-                border: 1px solid #999;
             }
 
             .native-gallery-code-section {
@@ -84,8 +83,8 @@
 
             .native-gallery-copy-btn {
                 position: absolute;
-                bottom: 0;
-                left: 0;
+                bottom: 2px;
+                left: 2px;
                 font-size: 16px;
                 padding: 3px;
                 border: 1px solid #000;
@@ -97,98 +96,6 @@
                 background-color: #fff;
             }
 
-            /** ad unit styles **/
-
-            .an-native-ad {
-                display: block;
-            }
-
-            .an-native-headline {
-                font-weight: bold;
-                font-size: 1.3em;
-            }
-
-            .an-native-sponsor-wrapper {
-                font-size: 0.8em;
-            }
-
-            .an-native-sponsor-label {
-                font-weight: bold;
-            }
-
-            .an-native-ad .an-native-cta {
-                text-decoration: none;
-                padding: 3px;
-                color: #000;
-                background: #fff;
-                border: 1px solid #000;
-                font-size: 1.2em;
-            }
-
-            .an-native-ad .an-native-body {
-                margin: 5px 0;
-            }
-
-            /* vanilla left-floated image */
-
-            .an-native-ad.img-left .an-native-img {
-                float: left;
-                margin-right: 5px;
-            }
-
-            /* overlayed image styles */
-
-            .an-native-ad.img-overlay {
-                position: relative;
-            }
-
-            .an-native-overlay-content {
-                position: absolute;
-                color: #fff;
-                width: 320px;
-                top: 0;
-                bottom: 0;
-            }
-
-            .an-native-overlay-content .an-native-logo {
-                position: absolute;
-                bottom: 5px;
-                right: 3px;
-            }
-
-            .an-native-overlay-content .an-native-headline {
-                position: absolute;
-                text-align: center;
-                top: 13px;
-                left: 0;
-                right: 0;
-            }
-
-            .an-native-overlay-content .an-native-sponsor-wrapper {
-                position: absolute;
-                bottom: 5px;
-                left: 3px;
-            }
-
-            .an-native-overlay-content .an-native-cta {
-                position: absolute;
-                bottom: 25%;
-                left: 60px;
-                right: 60px;
-                opacity: 0.7;
-                border: 0;
-                text-align: center;
-            }
-
-            .an-native-overlay-content .an-native-cta:hover {
-                opacity: 1.0;
-            }
-
-            /* stacked content */
-
-            .an-native-ad.stacked {
-                max-width: 200px;
-            } 
         </style>
         <script src="https://vjs.zencdn.net/5.19/video.min.js"></script>
     </head>
@@ -198,42 +105,43 @@
         </header>
         <article>
             <section>
-                This is a gallery of sample native creative renderings - these are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native creative response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content.
+                This is a gallery of sample native creative renderings - these are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native creative response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content. This snippet will serve a live ad.
             </section>
     <!--
             <section>
                 <h2>How to use the code snippets</h2>
                 <p>
-                    To use these code snippets you will need to paste in the 
+                    To use these code snippets you will need to paste in the HEAD element of your page!
                 </p>
+                /// a code snippet here
             </section>
     -->
         </article>
         <article class='native-gallery-item'>
             <h2>Main image, headline, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class='an-native-ad img-left'>
-    <a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>
-        <img class='an-native-img' src='./assets/placeholder.jpg' width='160' height='120' />
+                <div class="an-native-ad img-left" style="display:block;">
+    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" style="float:left;margin-right:5px;"/>
     </a>
-    <div class='an-natie-rhs'>
-        <header class='an-native-headline'>Welcome Thrillho!</header>
-        <div class='an-native-sponsor-wrapper'>
-            <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-rhs">
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
     </div>
 </div>
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class='an-native-ad img-left'>
-    <a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>
-        <img class='an-native-img' src='./assets/placeholder.jpg' width='160' height='120' />
+                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad img-left" style="display:block;">
+    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" style="float:left;margin-right:5px;"/>
     </a>
-    <div class='an-natie-rhs'>
-        <header class='an-native-headline'>Welcome Thrillho!</header>
-        <div class='an-native-sponsor-wrapper'>
-            <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-rhs">
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
     </div>
 </div></textarea>
@@ -246,35 +154,51 @@
         <article class='native-gallery-item'>
             <h2>Main image, headline, logo, call to action, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class='an-native-ad img-overlay'>
-    <div class='an-native-overlay-content'>
-        <header class='an-native-headline'>Welcome Thrillho!</header>
-        <div class='an-native-sponsor-wrapper'>
-            <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+                <div class="an-native-ad img-overlay" style="display:block;position:relative;">
+    <div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;">
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">Welcome Thrillho!</header>
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:5px;left:3px;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
-        <a href='https://frinkiac.com/episode/S07E11/123339' class='an-native-cta' target='_blank' title='...or go to hell!'>
+        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
             Buy me Bonestorm!
         </a>
-        <img class='an-native-logo' src='./assets/logo.png' width='80px'/>
+        <img class="an-native-logo" src="./assets/logo.png" width="80px" style="position:absolute;bottom:5px;right:3px;" />
     </div>
-    <img class='an-native-img' src='./assets/placeholder.jpg' width='320' height='240' />
+    <img class="an-native-img" src="./assets/placeholder.jpg" width="320" height="240" />
 </div>
+<style>
+    .an-native-overlay-content .an-native-cta {
+        opacity: 0.7;
+    }
+    .an-native-overlay-content .an-native-cta:hover {
+        opacity: 1.0;
+    }
+</style>
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class='an-native-ad img-overlay'>
-    <div class='an-native-overlay-content'>
-        <header class='an-native-headline'>Welcome Thrillho!</header>
-        <div class='an-native-sponsor-wrapper'>
-            <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad img-overlay" style="display:block;position:relative;">
+    <div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;">
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">Welcome Thrillho!</header>
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:5px;left:3px;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
-        <a href='https://frinkiac.com/episode/S07E11/123339' class='an-native-cta' target='_blank' title='...or go to hell!'>
+        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
             Buy me Bonestorm!
         </a>
-        <img class='an-native-logo' src='./assets/logo.png' width='80px'/>
+        <img class="an-native-logo" src="./assets/logo.png" width="80px" style="position:absolute;bottom:5px;right:3px;" />
     </div>
-    <img class='an-native-img' src='./assets/placeholder.jpg' width='320' height='240' />
-</div></textarea>
+    <img class="an-native-img" src="./assets/placeholder.jpg" width="320" height="240" />
+</div>
+<style>
+    .an-native-overlay-content .an-native-cta {
+        opacity: 0.7;
+    }
+    .an-native-overlay-content .an-native-cta:hover {
+        opacity: 1.0;
+    }
+</style></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -284,36 +208,36 @@
         <article class='native-gallery-item'>
             <h2>Main image, video (in-stream), headline, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class='an-native-ad img-left video-instream'>
-    <!--<a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>-->
-        <!-- <img class='an-native-img' src='./assets/placeholder.jpg' width='160' height='120' /> -->
+                <div class="an-native-ad img-left video-instream" style="display:block;">
+    <!--<a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">-->
+        <!-- <img class="an-native-img" src="./assets/placeholder.jpg" width="160" height="120" /> -->
         <!-- replace with a video at some point -->
-        <video class='an-native-img' poster='./assets/placeholder.jpg' width='160' height='120' autoplay loop>
-            <source src='./assets/sample-video.webm' type='video/webm'></source>
+        <video class="an-native-img" poster="./assets/placeholder.jpg" width="200" height="150" autoplay loop style="float:left;margin-right:5px;">
+            <source src="./assets/sample-video.webm" type="video/webm"></source>
         </video>
     </a>
-    <div class='an-native-rhs'>
-        <header class='an-native-headline'>Welcome Thrillho!</header>
-        <div class='an-native-sponsor-wrapper'>
-            <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-rhs">
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
     </div>
 </div>
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class='an-native-ad img-left video-instream'>
-    <!--<a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>-->
-        <!-- <img class='an-native-img' src='./assets/placeholder.jpg' width='160' height='120' /> -->
+                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad img-left video-instream" style="display:block;">
+    <!--<a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">-->
+        <!-- <img class="an-native-img" src="./assets/placeholder.jpg" width="160" height="120" /> -->
         <!-- replace with a video at some point -->
-        <video class='an-native-img' poster='./assets/placeholder.jpg' width='160' height='120' autoplay loop>
-            <source src='./assets/sample-video.webm' type='video/webm'></source>
+        <video class="an-native-img" poster="./assets/placeholder.jpg" width="200" height="150" autoplay loop style="float:left;margin-right:5px;">
+            <source src="./assets/sample-video.webm" type="video/webm"></source>
         </video>
     </a>
-    <div class='an-native-rhs'>
-        <header class='an-native-headline'>Welcome Thrillho!</header>
-        <div class='an-native-sponsor-wrapper'>
-            <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-rhs">
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
     </div>
 </div></textarea>
@@ -326,13 +250,13 @@
         <article class='native-gallery-item'>
             <h2>Main image, video (modal), headline, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class='an-native-ad stacked modal-video'>
-    <a class='an-native-modal-link' href='#'>
-        <img class='an-native-img' src='./assets/placeholder.jpg' width='200' height='150' /> 
+                <div class="an-native-ad stacked modal-video" style="display:block;">
+    <a class="an-native-modal-link" href="#">
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" /> 
     </a>
-    <header class='an-native-headline'>Welcome Thrillho!</header>
-    <div class='an-native-sponsor-wrapper'>
-        <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -343,13 +267,13 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class='an-native-ad stacked modal-video'>
-    <a class='an-native-modal-link' href='#'>
-        <img class='an-native-img' src='./assets/placeholder.jpg' width='200' height='150' /> 
+                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad stacked modal-video" style="display:block;">
+    <a class="an-native-modal-link" href="#">
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" /> 
     </a>
-    <header class='an-native-headline'>Welcome Thrillho!</header>
-    <div class='an-native-sponsor-wrapper'>
-        <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -366,31 +290,31 @@
         <article class='native-gallery-item'>
             <h2>Main image, headline, body, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class='an-native-ad stacked'>
-    <a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>
-        <img class='an-native-img' src='./assets/placeholder.jpg' width='200' height='150' />
+                <div class="an-native-ad stacked" style="display:block;max-width:200px;">
+    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" />
     </a>
-    <header class='an-native-headline'>Welcome Thrillho!</header>
-    <div class='an-native-body'>
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <div class="an-native-body" style="margin:5px 0;">
         This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
     </div>
-    <div class='an-native-sponsor-wrapper'>
-        <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
     </div>
 </div>
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class='an-native-ad stacked'>
-    <a href='https://frinkiac.com/episode/S07E11/123339' target='_blank'>
-        <img class='an-native-img' src='./assets/placeholder.jpg' width='200' height='150' />
+                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad stacked" style="display:block;max-width:200px;">
+    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" />
     </a>
-    <header class='an-native-headline'>Welcome Thrillho!</header>
-    <div class='an-native-body'>
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <div class="an-native-body" style="margin:5px 0;">
         This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
     </div>
-    <div class='an-native-sponsor-wrapper'>
-        <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
     </div>
 </div></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
@@ -402,25 +326,25 @@
         <article class='native-gallery-item'>
             <h2>Headline, body, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class='an-native-ad stacked stacked-text'>
-    <header class='an-native-headline'>Welcome Thrillho!</header>
-    <div class='an-native-body'>
+                <div class="an-native-ad stacked stacked-text" style="display:block;max-width:200px;">
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <div class="an-native-body" style="margin:5px 0;">
         This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
     </div>
-    <div class='an-native-sponsor-wrapper'>
-        <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
     </div>
 </div>
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class='an-native-ad stacked stacked-text'>
-    <header class='an-native-headline'>Welcome Thrillho!</header>
-    <div class='an-native-body'>
+                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad stacked stacked-text" style="display:block;max-width:200px;">
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <div class="an-native-body" style="margin:5px 0;">
         This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
     </div>
-    <div class='an-native-sponsor-wrapper'>
-        <span class='an-native-sponsor-label'>Sponsored by:</span> <span class='an-native-sponsor'>Bonestorm</span>
+    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
     </div>
 </div></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>

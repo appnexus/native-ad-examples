@@ -1,12 +1,12 @@
-<div class="an-native-ad stacked">
+<div class="an-native-ad stacked" {{stylr style.ad.root style.ad.stacked}}>
     <a href="{{clickUrl}}" target="_blank">
         <img class="an-native-img" src="{{imgSrc}}" width="200" height="150" />
     </a>
-    <header class="an-native-headline">{{title}}</header>
-    <div class="an-native-body">
+    <header class="an-native-headline" {{stylr style.headline}}>{{title}}</header>
+    <div class="an-native-body" {{stylr style.body}}>
         {{body}}
     </div>
-    <div class="an-native-sponsor-wrapper">
-        <span class="an-native-sponsor-label">Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
+    <div class="an-native-sponsor-wrapper" {{stylr style.sponsorWrapper}}>
+        <span class="an-native-sponsor-label" {{stylr style.sponsorLabel}}>Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
     </div>
 </div>
