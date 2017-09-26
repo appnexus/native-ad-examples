@@ -32,9 +32,31 @@
                 text-align: center
             }
 
+            .inline-monospace {
+                font-family: monospace;
+            }
+
+            .intro {
+                border-bottom: 1px solid #999;
+                padding-bottom: 34px;
+            }
+
+            .intro p {
+                margin: 13px 0;
+            }
+
+            .intro h2 {
+                margin: 21px 0;
+            }
+
+            .intro .code-snippet {
+                position: relative;
+                height: 200px;
+            }
+
             .native-gallery-item {
                 margin: 34px 0;
-                padding-bottom: 22px;
+                padding-bottom: 21px;
                 border-bottom: 1px solid #999;
                 display: flex;
                 flex-flow: row wrap;
@@ -67,18 +89,18 @@
             }
 
             .native-gallery-code-block {
-                position: absolute;
                 resize: none;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                left: 0;
                 width: 100%;
                 font-family: monospace;
                 font-size: 0.8em;
                 outline: none;
                 padding: 5px;
                 background: #f9f9f9;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                position: absolute;
             }
 
             .native-gallery-copy-btn {
@@ -103,19 +125,25 @@
         <header class='page-header'>
             <h1>Native Ad Gallery</h1>
         </header>
-        <article>
-            <section>
-                This is a gallery of sample native creative renderings - these are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native creative response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content. This snippet will serve a live ad.
-            </section>
-    <!--
+        <article class='intro'>
+            <p>
+                This is a gallery of sample native creative renderings. These samples are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content - this snippet will serve a live sample ad.
+            </p>
             <section>
                 <h2>How to use the code snippets</h2>
                 <p>
-                    To use these code snippets you will need to paste in the HEAD element of your page!
+                    To use the code snippets in this gallery you will need to add the following script into the <span class='inline-monospace'>&lt;head&gt;</span> element of your page. This will ensure that the page makes the ad call to our sample native creative.
                 </p>
-                /// a code snippet here
+                <section class='code-snippet'>
+                    <textarea class='native-gallery-code-block' readonly>{{render-script adCall}}</textarea>
+                    <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+                        Copy
+                    </button>
+                </section>
+                <p>
+                    After you have pasted this script into <span class='inline-monospace'>&lt;head&gt;</span>, paste the desired code snippet onto your page where you want it to appear - this script is self-contained and will render in-stream.
+                </p>
             </section>
-    -->
         </article>
     {{#each items}}
         <article class='native-gallery-item'>
@@ -125,7 +153,7 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>{{interpolate-ad-markup}}</textarea>
+                    <textarea class='native-gallery-code-block' readonly>{{interpolate-ad-code}}</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>

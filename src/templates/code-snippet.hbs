@@ -1,0 +1,41 @@
+(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '{{{adMarkup}}}' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
+        });
+    }
+}, 10);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+})();

@@ -12,12 +12,34 @@ const fs = require('fs');
 const indexFile = fs.readFileSync('./src/templates/index.hbs', 'utf-8');
 const indexTemplate = handlebars.compile(indexFile);
 
+const codeFile = fs.readFileSync('./src/templates/code-snippet.hbs', 'utf-8');
+const codeTemplate = handlebars.compile(codeFile);
+
 const adGallery = require('../src/ad-gallery.js');
 const sampleAd = require('../src/sample-ad.js');
+const interpolatedAd = require('../src/interpolated-ad.js');
 const style = require('../src/style.js');
 
+const adCall = fs.readFileSync('./src/ad-call.js', 'utf-8');
+
 /**
- * This returns formatted html as a safestrng so that it will be put on the template either for markup or code samples
+ * Wraps blocks of javascript in script tags
+ */
+handlebars.registerHelper('render-script', function(script) {
+	return `<script type="text/javascript">
+${script}
+</script>`;
+});
+
+/**
+ * Returns a sample code block
+ */
+ handlebars.registerHelper('interpolate-ad-code', function() {
+ 	return new handlebars.SafeString(this.adCode);
+ });
+
+/**
+ * This returns formatted html as a safestrng so that it will be put on the template to render a fake ad
  */
 handlebars.registerHelper('interpolate-ad-markup', function() {
 	return new handlebars.SafeString(this.adMarkup);
@@ -45,10 +67,13 @@ const items = adGallery.map((item) => {
 	const templateFile = fs.readFileSync(`./src/templates/${item.template}.hbs`, 'utf-8')
 	const template = handlebars.compile(templateFile);
 	const markupData = Object.assign({}, sampleAd, { style });
+	const codeMarkupData = Object.assign({}, interpolatedAd, { style });
 
 	return Object.assign({}, item, {
-		adMarkup: template(markupData)
+		adMarkup: template(markupData),
+		// we remove the tabs and newlines from the markup we put into the ad code sample
+		adCode: codeTemplate({ adMarkup: template(codeMarkupData).replace(/(\n|\t|\s\s)/g, '') })
 	});
 });
 
-fs.writeFileSync('./index.html', indexTemplate({ items }));
+fs.writeFileSync('./index.html', indexTemplate({ items, adCall }));

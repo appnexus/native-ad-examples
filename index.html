@@ -32,9 +32,31 @@
                 text-align: center
             }
 
+            .inline-monospace {
+                font-family: monospace;
+            }
+
+            .intro {
+                border-bottom: 1px solid #999;
+                padding-bottom: 34px;
+            }
+
+            .intro p {
+                margin: 13px 0;
+            }
+
+            .intro h2 {
+                margin: 21px 0;
+            }
+
+            .intro .code-snippet {
+                position: relative;
+                height: 200px;
+            }
+
             .native-gallery-item {
                 margin: 34px 0;
-                padding-bottom: 22px;
+                padding-bottom: 21px;
                 border-bottom: 1px solid #999;
                 display: flex;
                 flex-flow: row wrap;
@@ -67,18 +89,18 @@
             }
 
             .native-gallery-code-block {
-                position: absolute;
                 resize: none;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                left: 0;
                 width: 100%;
                 font-family: monospace;
                 font-size: 0.8em;
                 outline: none;
                 padding: 5px;
                 background: #f9f9f9;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                position: absolute;
             }
 
             .native-gallery-copy-btn {
@@ -103,19 +125,64 @@
         <header class='page-header'>
             <h1>Native Ad Gallery</h1>
         </header>
-        <article>
-            <section>
-                This is a gallery of sample native creative renderings - these are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native creative response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content. This snippet will serve a live ad.
-            </section>
-    <!--
+        <article class='intro'>
+            <p>
+                This is a gallery of sample native creative renderings. These samples are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content - this snippet will serve a live sample ad.
+            </p>
             <section>
                 <h2>How to use the code snippets</h2>
                 <p>
-                    To use these code snippets you will need to paste in the HEAD element of your page!
+                    To use the code snippets in this gallery you will need to add the following script into the <span class='inline-monospace'>&lt;head&gt;</span> element of your page. This will ensure that the page makes the ad call to our sample native creative.
                 </p>
-                /// a code snippet here
+                <section class='code-snippet'>
+                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
+//create empty apntag object if it doesn&#x27;t exist
+var apntag &#x3D; apntag || {};
+//create a queue on the apntag object
+apntag.anq &#x3D; apntag.anq || [];
+//load ast.js - async
+(function() {
+    var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
+    scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
+    scr.src &#x3D; ((pro &#x3D;&#x3D;&#x3D; &#x27;https:&#x27;) ? &#x27;https&#x27; : &#x27;http&#x27;) + &#x27;://acdn.adnxs.com/ast/ast.js&#x27;;
+    if(!apntag.l){apntag.l&#x3D;true; tar.insertBefore(scr, tar.firstChild);}
+})();
+//push commands to loading queue, to allow for async loading
+apntag.anq.push(function() {
+    //set global page options
+    apntag.setPageOpts({
+        member: 882,
+        disablePsa: true,
+        targetingParams: {
+           
+        }
+    });
+    //define ad tags
+    apntag.defineTag({
+        tagId: 12119864,
+        sizes: [[1,1]],
+        targetId: &#x27;adunit&#x27;,
+        native: {
+            title: {required: true, max_length: 140},
+            body: {required: true, max_length: 300},
+            image: {required: false},
+            sponsoredBy: {required: true, max_length: 50},
+            icon: {required:false}
+            cta: {required:false}
+        }
+    });
+    //start loading tags
+    apntag.loadTags();
+});
+&lt;/script&gt;</textarea>
+                    <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
+                        Copy
+                    </button>
+                </section>
+                <p>
+                    After you have pasted this script into <span class='inline-monospace'>&lt;head&gt;</span>, paste the desired code snippet onto your page where you want it to appear - this script is self-contained and will render in-stream.
+                </p>
             </section>
-    -->
         </article>
         <article class='native-gallery-item'>
             <h2>Main image, headline, sponsor</h2>
@@ -134,17 +201,50 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad img-left" style="display:block;">
-    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
-        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" style="float:left;margin-right:5px;"/>
-    </a>
-    <div class="an-native-rhs">
-        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-            <span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-        </div>
-    </div>
-</div></textarea>
+                    <textarea class='native-gallery-code-block' readonly>(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '<div class="an-native-ad img-left" style="display:block;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" height="150" style="float:left;margin-right:5px;"/></a><div class="an-native-rhs"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div></div>' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
+        });
+    }
+}, 10);
+
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+
+
+})();</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -178,27 +278,50 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad img-overlay" style="display:block;position:relative;">
-    <div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;">
-        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:5px;left:3px;">
-            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-        </div>
-        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
-            Buy me Bonestorm!
-        </a>
-        <img class="an-native-logo" src="./assets/logo.png" width="80px" style="position:absolute;bottom:5px;right:3px;" />
-    </div>
-    <img class="an-native-img" src="./assets/placeholder.jpg" width="320" height="240" />
-</div>
-<style>
-    .an-native-overlay-content .an-native-cta {
-        opacity: 0.7;
+                    <textarea class='native-gallery-code-block' readonly>(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '<div class="an-native-ad img-overlay" style="display:block;position:relative;"><div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:5px;left:3px;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">&#x27;+ctaText+&#x27;</a><img class="an-native-logo" src="&#x27;+iconSrc+&#x27;" width="80px" style="position:absolute;bottom:5px;right:3px;" /></div><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="320" height="240" /></div><style>.an-native-overlay-content .an-native-cta {opacity: 0.7;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}</style>' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
+        });
     }
-    .an-native-overlay-content .an-native-cta:hover {
-        opacity: 1.0;
-    }
-</style></textarea>
+}, 10);
+
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+
+
+})();</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -226,21 +349,50 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad img-left video-instream" style="display:block;">
-    <!--<a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">-->
-        <!-- <img class="an-native-img" src="./assets/placeholder.jpg" width="160" height="120" /> -->
-        <!-- replace with a video at some point -->
-        <video class="an-native-img" poster="./assets/placeholder.jpg" width="200" height="150" autoplay loop style="float:left;margin-right:5px;">
-            <source src="./assets/sample-video.webm" type="video/webm"></source>
-        </video>
-    </a>
-    <div class="an-native-rhs">
-        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-        </div>
-    </div>
-</div></textarea>
+                    <textarea class='native-gallery-code-block' readonly>(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '<div class="an-native-ad img-left video-instream" style="display:block;"><!--<a href="&#x27;+clickUrl+&#x27;" target="_blank">--><!-- <img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="160" height="120" /> --><!-- replace with a video at some point --><video class="an-native-img" poster="&#x27;+imgSrc+&#x27;" width="200" height="150" autoplay loop style="float:left;margin-right:5px;"><source src="&#x27;+videoSrc+&#x27;" type="video/webm"></source></video></a><div class="an-native-rhs"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div></div>' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
+        });
+    }
+}, 10);
+
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+
+
+})();</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -267,20 +419,50 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad stacked modal-video" style="display:block;">
-    <a class="an-native-modal-link" href="#">
-        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" /> 
-    </a>
-    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // code that actually makes the modal go
+                    <textarea class='native-gallery-code-block' readonly>(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '<div class="an-native-ad stacked modal-video" style="display:block;"><a class="an-native-modal-link" href="#"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" height="150" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><script>document.addEventListener('DOMContentLoaded', function() {// code that actually makes the modal go});</script></div>' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
         });
-    </script>
-</div></textarea>
+    }
+}, 10);
+
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+
+
+})();</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -305,18 +487,50 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad stacked" style="display:block;max-width:200px;">
-    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
-        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" />
-    </a>
-    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-    <div class="an-native-body" style="margin:5px 0;">
-        This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
-    </div>
-    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-    </div>
-</div></textarea>
+                    <textarea class='native-gallery-code-block' readonly>(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '<div class="an-native-ad stacked" style="display:block;max-width:200px;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" height="150" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
+        });
+    }
+}, 10);
+
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+
+
+})();</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -338,15 +552,50 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly><div class="an-native-ad stacked stacked-text" style="display:block;max-width:200px;">
-    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-    <div class="an-native-body" style="margin:5px 0;">
-        This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
-    </div>
-    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-    </div>
-</div></textarea>
+                    <textarea class='native-gallery-code-block' readonly>(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nativeObj = adObj.native;
+                var clickUrl = nativeObj.clickUrl;
+                var title = nativeObj.title;
+                var body = nativeObj.body;
+                var sponsor = nativeObj.sponsoredBy;
+                var imgSrc = nativeObj.image.url;
+                var ctaText = nativeObj.cta;
+                var iconSrc = nativeObj.icon;
+                var impTrackers = nativeObj.impressionTrackers || [];
+                var jsTrackers = nativeObj.jsTrackers || [];
+                var clickTrackers = nativeObj.clickTrackers;
+
+                $ad.innerHTML = '<div class="an-native-ad stacked stacked-text" style="display:block;max-width:200px;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>' + jsTrackers;
+
+                // fire imp trackers
+                impTrackers.forEach(fireRequest);
+
+                $ad.getElementsByTagName('a').forEach(function(tag) {
+                    tag.addEventListenter('click', function() {
+                        clickTrackers.forEach(fireRequest);
+                    });
+                });
+            });
+        });
+    }
+}, 10);
+
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+
+
+})();</textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
