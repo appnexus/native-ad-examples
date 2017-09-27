@@ -29,7 +29,7 @@ apntag.anq.push(function() {
             body: {required: true, max_length: 300},
             image: {required: false},
             sponsoredBy: {required: true, max_length: 50},
-            icon: {required:false}
+            icon: {required:false, sizes: [{width: 300, height: 300}]},
             cta: {required:false}
         }
     });

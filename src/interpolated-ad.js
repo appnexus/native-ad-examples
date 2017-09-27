@@ -7,6 +7,6 @@ module.exports = {
 	title: safeInterpolate('title'),
 	sponsor: safeInterpolate('sponsor'),
 	body: safeInterpolate('body'),
-	ctaText: safeInterpolate('ctaText'),
+	ctaText: safeInterpolate('cta'),
 	clickUrl: safeInterpolate('clickUrl')
 }

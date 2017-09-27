@@ -7,23 +7,44 @@ var stateCheck = setInterval(function() {
             apntag.showTag('adunit');
             apntag.onEvent('adAvailable', function(adObj) {
                 var $ad = document.getElementById('an-demo-ad');
-                var nativeObj = adObj.native;
-                var clickUrl = nativeObj.clickUrl;
-                var title = nativeObj.title;
-                var body = nativeObj.body;
-                var sponsor = nativeObj.sponsoredBy;
-                var imgSrc = nativeObj.image.url;
-                var ctaText = nativeObj.cta;
-                var iconSrc = nativeObj.icon;
-                var impTrackers = nativeObj.impressionTrackers || [];
-                var jsTrackers = nativeObj.jsTrackers || [];
-                var clickTrackers = nativeObj.clickTrackers;
+                var nObj = adObj.native;
+                // not all native fields will be specified on the request,
+                // so make sure you trap any null values properly
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML = '{{{adMarkup}}}' + jsTrackers;
+                $ad.innerHTML = '{{{adMarkup}}}';
+
+                // collect and fire off the trackers
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
                 impTrackers.forEach(fireRequest);
 
+                // fire js trackers
+                jsTrackers
+                    .filter(function(url) {
+                        // this is where you would filter out tracker that you don't want to fire
+                        // for example, this will only include moat trackers:
+                        // return url.indexOf('//z.moatads.com') > -1;
+                        return true;
+                    })
+                    .forEach(function(url) {
+                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = url;
+                        tar.insertBefore(scr, tar.firstChild);
+                    });
+
+                // set up handlers for click trackers -
+                // this will only work if you wrap clickable elements in <a> tags
                 $ad.getElementsByTagName('a').forEach(function(tag) {
                     tag.addEventListenter('click', function() {
                         clickTrackers.forEach(fireRequest);
@@ -38,4 +59,11 @@ var fireRequest = function(url) {
     request.open('GET', url);
     request.send();
 };
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
+        urls.push(result[1]);
+    }
+    return urls;
+}
 })();
