@@ -4,7 +4,8 @@
 module.exports = {
 	'ad': {
 		root: {
-			display: 'block'
+			display: 'block',
+			'font-family': 'Helvetica Neue, Helvetica, Arial, sans-serif'
 		},
 		stacked: {
 			'max-width': '200px',
@@ -56,7 +57,7 @@ module.exports = {
 		},
 		'logo': {
 			position: 'absolute',
-			bottom: '5px',
+			bottom: '3px',
 			right: '3px',
 		},
 		'headline': {
@@ -68,7 +69,7 @@ module.exports = {
 		},
 		'sponsorWrapper': {
 			position: 'absolute',
-			bottom: '5px',
+			bottom: '3px',
 			left: '3px',
 		},
 		'cta': {

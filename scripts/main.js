@@ -32,6 +32,13 @@ ${script}
 });
 
 /**
+ * Returns a sample code block
+ */
+ handlebars.registerHelper('interpolate-ad-code', function() {
+ 	return new handlebars.SafeString(this.adCode);
+ });
+
+/**
  * This returns formatted html as a safestrng so that it will be put on the template to render a fake ad
  */
 handlebars.registerHelper('interpolate-ad-markup', function() {

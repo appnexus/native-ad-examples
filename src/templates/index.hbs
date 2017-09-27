@@ -153,7 +153,9 @@
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>{{ render-script adCode }}</textarea>
+                    <textarea class='native-gallery-code-block' readonly><script type="text/javascript">
+{{interpolate-ad-code}}
+</script></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>

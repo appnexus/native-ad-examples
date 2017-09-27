@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>AppNexus Native Gallery</title>
         <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no"/>
-        <link href="https://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
+        <!-- <link href="https://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">-->
         <style>
             * {
                 margin: 0;
@@ -119,7 +119,7 @@
             }
 
         </style>
-        <script src="https://vjs.zencdn.net/5.19/video.min.js"></script>
+        <!--<script src="https://vjs.zencdn.net/5.19/video.min.js"></script>-->
     </head>
     <body>
         <header class='page-header'>
@@ -187,9 +187,9 @@ apntag.anq.push(function() {
         <article class='native-gallery-item'>
             <h2>Main image, headline, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad img-left" style="display:block;">
+                <div class="an-native-ad img-left" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;">
     <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
-        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" style="float:left;margin-right:5px;"/>
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" style="float:left;margin-right:5px;"/>
     </a>
     <div class="an-native-rhs">
         <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
@@ -201,33 +201,33 @@ apntag.anq.push(function() {
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
+                    <textarea class='native-gallery-code-block' readonly><script type="text/javascript">
 (function() {
-document.write(&#x27;&lt;div id&#x3D;&quot;an-demo-ad&quot;&gt;&lt;/div&gt;&#x27;);
-var stateCheck &#x3D; setInterval(function() {
-    if(document.readyState &#x3D;&#x3D;&#x3D; &#x27;complete&#x27;) {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag(&#x27;adunit&#x27;);
-            apntag.onEvent(&#x27;adAvailable&#x27;, function(adObj) {
-                var $ad &#x3D; document.getElementById(&#x27;an-demo-ad&#x27;);
-                var nObj &#x3D; adObj.native;
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nObj = adObj.native;
                 // not all native fields will be specified on the request,
                 // so make sure you trap any null values properly
-                var clickUrl &#x3D; nObj.clickUrl;
-                var title &#x3D; nObj.title;
-                var body &#x3D; nObj.body;
-                var sponsor &#x3D; nObj.sponsoredBy;
-                var imgSrc &#x3D; nObj.image &amp;&amp; nObj.image.url;
-                var cta &#x3D; nObj.cta;
-                var iconSrc &#x3D; nObj.icon &amp;&amp; nObj.icon.url;
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML &#x3D; &#x27;&lt;div class&#x3D;&quot;an-native-ad img-left&quot; style&#x3D;&quot;display:block;&quot;&gt;&lt;a href&#x3D;&quot;&amp;#x27;+clickUrl+&amp;#x27;&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;img class&#x3D;&quot;an-native-img&quot; src&#x3D;&quot;&amp;#x27;+imgSrc+&amp;#x27;&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;150&quot; style&#x3D;&quot;float:left;margin-right:5px;&quot;/&gt;&lt;/a&gt;&lt;div class&#x3D;&quot;an-native-rhs&quot;&gt;&lt;header class&#x3D;&quot;an-native-headline&quot; style&#x3D;&quot;font-weight:bold;font-size:1.3em;&quot;&gt;&amp;#x27;+title+&amp;#x27;&lt;/header&gt;&lt;div class&#x3D;&quot;an-native-sponsor-wrapper&quot; style&#x3D;&quot;font-size:0.8em;&quot;&gt;&lt;span class&#x3D;&quot;an-native-sponsor-label&quot; style&#x3D;&quot;font-weight:bold;&quot;&gt; Sponsored by:&lt;/span&gt; &lt;span class&#x3D;&quot;an-native-sponsor&quot;&gt;&amp;#x27;+sponsor+&amp;#x27;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+                $ad.innerHTML = '<div class="an-native-ad img-left" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" style="float:left;margin-right:5px;"/></a><div class="an-native-rhs"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div></div>';
 
                 // collect and fire off the trackers
-                var impTrackers &#x3D; nObj.impressionTrackers || [];
-                var jsTrackers &#x3D; parseJsTrackers(nObj.javascriptTrackers) || [];
-                var clickTrackers &#x3D; nObj.clickTrackers;
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
                 impTrackers.forEach(fireRequest);
@@ -235,22 +235,22 @@ var stateCheck &#x3D; setInterval(function() {
                 // fire js trackers
                 jsTrackers
                     .filter(function(url) {
-                        // this is where you would filter out tracker that you don&#x27;t want to fire
+                        // this is where you would filter out tracker that you don't want to fire
                         // for example, this will only include moat trackers:
-                        // return url.indexOf(&#x27;//z.moatads.com&#x27;) &gt; -1;
+                        // return url.indexOf('//z.moatads.com') > -1;
                         return true;
                     })
                     .forEach(function(url) {
-                        var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
-                        scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
-                        scr.src &#x3D; url;
+                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = url;
                         tar.insertBefore(scr, tar.firstChild);
                     });
 
                 // set up handlers for click trackers -
-                // this will only work if you wrap clickable elements in &lt;a&gt; tags
-                $ad.getElementsByTagName(&#x27;a&#x27;).forEach(function(tag) {
-                    tag.addEventListenter(&#x27;click&#x27;, function() {
+                // this will only work if you wrap clickable elements in <a> tags
+                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
+                    tag.addEventListener('click', function() {
                         clickTrackers.forEach(fireRequest);
                     });
                 });
@@ -258,20 +258,20 @@ var stateCheck &#x3D; setInterval(function() {
         });
     }
 }, 10);
-var fireRequest &#x3D; function(url) {
-    var request &#x3D; new XMLHttpRequest();
-    request.open(&#x27;GET&#x27;, url);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
     request.send();
 };
-var parseJsTrackers &#x3D; function(str) {
-    var urls &#x3D; [], regex &#x3D; /(?:&lt;script.+?)(?:src&#x3D;&quot;)(.+?)&quot;.*?&gt;&lt;\/script&gt;/g, result;
-    while((result &#x3D; regex.exec(str)) !&#x3D;&#x3D; null) {
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
         urls.push(result[1]);
     }
     return urls;
 }
 })();
-&lt;/script&gt;</textarea>
+</script></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -281,18 +281,18 @@ var parseJsTrackers &#x3D; function(str) {
         <article class='native-gallery-item'>
             <h2>Main image, headline, logo, call to action, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad img-overlay" style="display:block;position:relative;">
+                <div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;">
     <div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;">
         <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:5px;left:3px;">
+        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;">
             <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
         <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
             Buy me Bonestorm!
         </a>
-        <img class="an-native-logo" src="./assets/logo.png" width="80px" style="position:absolute;bottom:5px;right:3px;" />
+        <img class="an-native-logo" src="./assets/logo.png" width="50" style="position:absolute;bottom:3px;right:3px;" />
     </div>
-    <img class="an-native-img" src="./assets/placeholder.jpg" width="320" height="240" />
+    <img class="an-native-img" src="./assets/placeholder.jpg" width="320" />
 </div>
 <style>
     .an-native-overlay-content .an-native-cta {
@@ -305,33 +305,33 @@ var parseJsTrackers &#x3D; function(str) {
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
+                    <textarea class='native-gallery-code-block' readonly><script type="text/javascript">
 (function() {
-document.write(&#x27;&lt;div id&#x3D;&quot;an-demo-ad&quot;&gt;&lt;/div&gt;&#x27;);
-var stateCheck &#x3D; setInterval(function() {
-    if(document.readyState &#x3D;&#x3D;&#x3D; &#x27;complete&#x27;) {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag(&#x27;adunit&#x27;);
-            apntag.onEvent(&#x27;adAvailable&#x27;, function(adObj) {
-                var $ad &#x3D; document.getElementById(&#x27;an-demo-ad&#x27;);
-                var nObj &#x3D; adObj.native;
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nObj = adObj.native;
                 // not all native fields will be specified on the request,
                 // so make sure you trap any null values properly
-                var clickUrl &#x3D; nObj.clickUrl;
-                var title &#x3D; nObj.title;
-                var body &#x3D; nObj.body;
-                var sponsor &#x3D; nObj.sponsoredBy;
-                var imgSrc &#x3D; nObj.image &amp;&amp; nObj.image.url;
-                var cta &#x3D; nObj.cta;
-                var iconSrc &#x3D; nObj.icon &amp;&amp; nObj.icon.url;
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML &#x3D; &#x27;&lt;div class&#x3D;&quot;an-native-ad img-overlay&quot; style&#x3D;&quot;display:block;position:relative;&quot;&gt;&lt;div class&#x3D;&quot;an-native-overlay-content&quot; style&#x3D;&quot;position:absolute;color:#fff;width:320px;top:0;bottom:0;&quot;&gt;&lt;header class&#x3D;&quot;an-native-headline&quot; style&#x3D;&quot;font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;&quot;&gt;&amp;#x27;+title+&amp;#x27;&lt;/header&gt;&lt;div class&#x3D;&quot;an-native-sponsor-wrapper&quot; style&#x3D;&quot;font-size:0.8em;position:absolute;bottom:5px;left:3px;&quot;&gt;&lt;span class&#x3D;&quot;an-native-sponsor-label&quot; style&#x3D;&quot;font-weight:bold;&quot;&gt;Sponsored by:&lt;/span&gt; &lt;span class&#x3D;&quot;an-native-sponsor&quot;&gt;&amp;#x27;+sponsor+&amp;#x27;&lt;/span&gt;&lt;/div&gt;&lt;a href&#x3D;&quot;&amp;#x27;+clickUrl+&amp;#x27;&quot; class&#x3D;&quot;an-native-cta&quot; target&#x3D;&quot;_blank&quot; title&#x3D;&quot;...or go to hell!&quot; style&#x3D;&quot;text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;&quot;&gt;&amp;#x27;+cta+&amp;#x27;&lt;/a&gt;&lt;img class&#x3D;&quot;an-native-logo&quot; src&#x3D;&quot;&amp;#x27;+iconSrc+&amp;#x27;&quot; width&#x3D;&quot;80px&quot; style&#x3D;&quot;position:absolute;bottom:5px;right:3px;&quot; /&gt;&lt;/div&gt;&lt;img class&#x3D;&quot;an-native-img&quot; src&#x3D;&quot;&amp;#x27;+imgSrc+&amp;#x27;&quot; width&#x3D;&quot;320&quot; height&#x3D;&quot;240&quot; /&gt;&lt;/div&gt;&lt;style&gt;.an-native-overlay-content .an-native-cta {opacity: 0.7;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}&lt;/style&gt;&#x27;;
+                $ad.innerHTML = '<div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;"><div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><a href="&#x27;+clickUrl+&#x27;" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">&#x27;+cta+&#x27;</a><img class="an-native-logo" src="&#x27;+iconSrc+&#x27;" width="50" style="position:absolute;bottom:3px;right:3px;" /></div><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="320" /></div><style>.an-native-overlay-content .an-native-cta {opacity: 0.7;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}</style>';
 
                 // collect and fire off the trackers
-                var impTrackers &#x3D; nObj.impressionTrackers || [];
-                var jsTrackers &#x3D; parseJsTrackers(nObj.javascriptTrackers) || [];
-                var clickTrackers &#x3D; nObj.clickTrackers;
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
                 impTrackers.forEach(fireRequest);
@@ -339,22 +339,22 @@ var stateCheck &#x3D; setInterval(function() {
                 // fire js trackers
                 jsTrackers
                     .filter(function(url) {
-                        // this is where you would filter out tracker that you don&#x27;t want to fire
+                        // this is where you would filter out tracker that you don't want to fire
                         // for example, this will only include moat trackers:
-                        // return url.indexOf(&#x27;//z.moatads.com&#x27;) &gt; -1;
+                        // return url.indexOf('//z.moatads.com') > -1;
                         return true;
                     })
                     .forEach(function(url) {
-                        var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
-                        scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
-                        scr.src &#x3D; url;
+                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = url;
                         tar.insertBefore(scr, tar.firstChild);
                     });
 
                 // set up handlers for click trackers -
-                // this will only work if you wrap clickable elements in &lt;a&gt; tags
-                $ad.getElementsByTagName(&#x27;a&#x27;).forEach(function(tag) {
-                    tag.addEventListenter(&#x27;click&#x27;, function() {
+                // this will only work if you wrap clickable elements in <a> tags
+                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
+                    tag.addEventListener('click', function() {
                         clickTrackers.forEach(fireRequest);
                     });
                 });
@@ -362,215 +362,20 @@ var stateCheck &#x3D; setInterval(function() {
         });
     }
 }, 10);
-var fireRequest &#x3D; function(url) {
-    var request &#x3D; new XMLHttpRequest();
-    request.open(&#x27;GET&#x27;, url);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
     request.send();
 };
-var parseJsTrackers &#x3D; function(str) {
-    var urls &#x3D; [], regex &#x3D; /(?:&lt;script.+?)(?:src&#x3D;&quot;)(.+?)&quot;.*?&gt;&lt;\/script&gt;/g, result;
-    while((result &#x3D; regex.exec(str)) !&#x3D;&#x3D; null) {
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
         urls.push(result[1]);
     }
     return urls;
 }
 })();
-&lt;/script&gt;</textarea>
-                    <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
-                        Copy
-                    </button>
-                </div>
-            </section>
-        </article>
-        <article class='native-gallery-item'>
-            <h2>Main image, video (in-stream), headline, sponsor</h2>
-            <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad img-left video-instream" style="display:block;">
-    <!--<a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">-->
-        <!-- <img class="an-native-img" src="./assets/placeholder.jpg" width="160" height="120" /> -->
-        <!-- replace with a video at some point -->
-        <video class="an-native-img" poster="./assets/placeholder.jpg" width="200" height="150" autoplay loop style="float:left;margin-right:5px;">
-            <source src="./assets/sample-video.webm" type="video/webm"></source>
-        </video>
-    </a>
-    <div class="an-native-rhs">
-        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-        </div>
-    </div>
-</div>
-            </section>
-            <section class='native-gallery-code-section'>
-                <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
-(function() {
-document.write(&#x27;&lt;div id&#x3D;&quot;an-demo-ad&quot;&gt;&lt;/div&gt;&#x27;);
-var stateCheck &#x3D; setInterval(function() {
-    if(document.readyState &#x3D;&#x3D;&#x3D; &#x27;complete&#x27;) {
-        clearInterval(stateCheck);
-        apntag.anq.push(function() {
-            apntag.showTag(&#x27;adunit&#x27;);
-            apntag.onEvent(&#x27;adAvailable&#x27;, function(adObj) {
-                var $ad &#x3D; document.getElementById(&#x27;an-demo-ad&#x27;);
-                var nObj &#x3D; adObj.native;
-                // not all native fields will be specified on the request,
-                // so make sure you trap any null values properly
-                var clickUrl &#x3D; nObj.clickUrl;
-                var title &#x3D; nObj.title;
-                var body &#x3D; nObj.body;
-                var sponsor &#x3D; nObj.sponsoredBy;
-                var imgSrc &#x3D; nObj.image &amp;&amp; nObj.image.url;
-                var cta &#x3D; nObj.cta;
-                var iconSrc &#x3D; nObj.icon &amp;&amp; nObj.icon.url;
-
-                $ad.innerHTML &#x3D; &#x27;&lt;div class&#x3D;&quot;an-native-ad img-left video-instream&quot; style&#x3D;&quot;display:block;&quot;&gt;&lt;!--&lt;a href&#x3D;&quot;&amp;#x27;+clickUrl+&amp;#x27;&quot; target&#x3D;&quot;_blank&quot;&gt;--&gt;&lt;!-- &lt;img class&#x3D;&quot;an-native-img&quot; src&#x3D;&quot;&amp;#x27;+imgSrc+&amp;#x27;&quot; width&#x3D;&quot;160&quot; height&#x3D;&quot;120&quot; /&gt; --&gt;&lt;!-- replace with a video at some point --&gt;&lt;video class&#x3D;&quot;an-native-img&quot; poster&#x3D;&quot;&amp;#x27;+imgSrc+&amp;#x27;&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;150&quot; autoplay loop style&#x3D;&quot;float:left;margin-right:5px;&quot;&gt;&lt;source src&#x3D;&quot;&amp;#x27;+videoSrc+&amp;#x27;&quot; type&#x3D;&quot;video/webm&quot;&gt;&lt;/source&gt;&lt;/video&gt;&lt;/a&gt;&lt;div class&#x3D;&quot;an-native-rhs&quot;&gt;&lt;header class&#x3D;&quot;an-native-headline&quot; style&#x3D;&quot;font-weight:bold;font-size:1.3em;&quot;&gt;&amp;#x27;+title+&amp;#x27;&lt;/header&gt;&lt;div class&#x3D;&quot;an-native-sponsor-wrapper&quot; style&#x3D;&quot;font-size:0.8em;&quot;&gt;&lt;span class&#x3D;&quot;an-native-sponsor-label&quot; style&#x3D;&quot;font-weight:bold;&quot;&gt;Sponsored by:&lt;/span&gt; &lt;span class&#x3D;&quot;an-native-sponsor&quot;&gt;&amp;#x27;+sponsor+&amp;#x27;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
-
-                // collect and fire off the trackers
-                var impTrackers &#x3D; nObj.impressionTrackers || [];
-                var jsTrackers &#x3D; parseJsTrackers(nObj.javascriptTrackers) || [];
-                var clickTrackers &#x3D; nObj.clickTrackers;
-
-                // fire imp trackers
-                impTrackers.forEach(fireRequest);
-
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don&#x27;t want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf(&#x27;//z.moatads.com&#x27;) &gt; -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
-                        scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
-                        scr.src &#x3D; url;
-                        tar.insertBefore(scr, tar.firstChild);
-                    });
-
-                // set up handlers for click trackers -
-                // this will only work if you wrap clickable elements in &lt;a&gt; tags
-                $ad.getElementsByTagName(&#x27;a&#x27;).forEach(function(tag) {
-                    tag.addEventListenter(&#x27;click&#x27;, function() {
-                        clickTrackers.forEach(fireRequest);
-                    });
-                });
-            });
-        });
-    }
-}, 10);
-var fireRequest &#x3D; function(url) {
-    var request &#x3D; new XMLHttpRequest();
-    request.open(&#x27;GET&#x27;, url);
-    request.send();
-};
-var parseJsTrackers &#x3D; function(str) {
-    var urls &#x3D; [], regex &#x3D; /(?:&lt;script.+?)(?:src&#x3D;&quot;)(.+?)&quot;.*?&gt;&lt;\/script&gt;/g, result;
-    while((result &#x3D; regex.exec(str)) !&#x3D;&#x3D; null) {
-        urls.push(result[1]);
-    }
-    return urls;
-}
-})();
-&lt;/script&gt;</textarea>
-                    <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
-                        Copy
-                    </button>
-                </div>
-            </section>
-        </article>
-        <article class='native-gallery-item'>
-            <h2>Main image, video (modal), headline, sponsor</h2>
-            <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad stacked modal-video" style="display:block;">
-    <a class="an-native-modal-link" href="#">
-        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" /> 
-    </a>
-    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // code that actually makes the modal go
-        });
-    </script>
-</div>
-            </section>
-            <section class='native-gallery-code-section'>
-                <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
-(function() {
-document.write(&#x27;&lt;div id&#x3D;&quot;an-demo-ad&quot;&gt;&lt;/div&gt;&#x27;);
-var stateCheck &#x3D; setInterval(function() {
-    if(document.readyState &#x3D;&#x3D;&#x3D; &#x27;complete&#x27;) {
-        clearInterval(stateCheck);
-        apntag.anq.push(function() {
-            apntag.showTag(&#x27;adunit&#x27;);
-            apntag.onEvent(&#x27;adAvailable&#x27;, function(adObj) {
-                var $ad &#x3D; document.getElementById(&#x27;an-demo-ad&#x27;);
-                var nObj &#x3D; adObj.native;
-                // not all native fields will be specified on the request,
-                // so make sure you trap any null values properly
-                var clickUrl &#x3D; nObj.clickUrl;
-                var title &#x3D; nObj.title;
-                var body &#x3D; nObj.body;
-                var sponsor &#x3D; nObj.sponsoredBy;
-                var imgSrc &#x3D; nObj.image &amp;&amp; nObj.image.url;
-                var cta &#x3D; nObj.cta;
-                var iconSrc &#x3D; nObj.icon &amp;&amp; nObj.icon.url;
-
-                $ad.innerHTML &#x3D; &#x27;&lt;div class&#x3D;&quot;an-native-ad stacked modal-video&quot; style&#x3D;&quot;display:block;&quot;&gt;&lt;a class&#x3D;&quot;an-native-modal-link&quot; href&#x3D;&quot;#&quot;&gt;&lt;img class&#x3D;&quot;an-native-img&quot; src&#x3D;&quot;&amp;#x27;+imgSrc+&amp;#x27;&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;150&quot; /&gt;&lt;/a&gt;&lt;header class&#x3D;&quot;an-native-headline&quot; style&#x3D;&quot;font-weight:bold;font-size:1.3em;&quot;&gt;&amp;#x27;+title+&amp;#x27;&lt;/header&gt;&lt;div class&#x3D;&quot;an-native-sponsor-wrapper&quot; style&#x3D;&quot;font-size:0.8em;&quot;&gt;&lt;span class&#x3D;&quot;an-native-sponsor-label&quot; style&#x3D;&quot;font-weight:bold;&quot;&gt;Sponsored by:&lt;/span&gt; &lt;span class&#x3D;&quot;an-native-sponsor&quot;&gt;&amp;#x27;+sponsor+&amp;#x27;&lt;/span&gt;&lt;/div&gt;&lt;script&gt;document.addEventListener(&#x27;DOMContentLoaded&#x27;, function() {// code that actually makes the modal go});&lt;/script&gt;&lt;/div&gt;&#x27;;
-
-                // collect and fire off the trackers
-                var impTrackers &#x3D; nObj.impressionTrackers || [];
-                var jsTrackers &#x3D; parseJsTrackers(nObj.javascriptTrackers) || [];
-                var clickTrackers &#x3D; nObj.clickTrackers;
-
-                // fire imp trackers
-                impTrackers.forEach(fireRequest);
-
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don&#x27;t want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf(&#x27;//z.moatads.com&#x27;) &gt; -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
-                        scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
-                        scr.src &#x3D; url;
-                        tar.insertBefore(scr, tar.firstChild);
-                    });
-
-                // set up handlers for click trackers -
-                // this will only work if you wrap clickable elements in &lt;a&gt; tags
-                $ad.getElementsByTagName(&#x27;a&#x27;).forEach(function(tag) {
-                    tag.addEventListenter(&#x27;click&#x27;, function() {
-                        clickTrackers.forEach(fireRequest);
-                    });
-                });
-            });
-        });
-    }
-}, 10);
-var fireRequest &#x3D; function(url) {
-    var request &#x3D; new XMLHttpRequest();
-    request.open(&#x27;GET&#x27;, url);
-    request.send();
-};
-var parseJsTrackers &#x3D; function(str) {
-    var urls &#x3D; [], regex &#x3D; /(?:&lt;script.+?)(?:src&#x3D;&quot;)(.+?)&quot;.*?&gt;&lt;\/script&gt;/g, result;
-    while((result &#x3D; regex.exec(str)) !&#x3D;&#x3D; null) {
-        urls.push(result[1]);
-    }
-    return urls;
-}
-})();
-&lt;/script&gt;</textarea>
+</script></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -580,9 +385,9 @@ var parseJsTrackers &#x3D; function(str) {
         <article class='native-gallery-item'>
             <h2>Main image, headline, body, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad stacked" style="display:block;max-width:200px;">
+                <div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;">
     <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
-        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" height="150" />
+        <img class="an-native-img" src="./assets/placeholder.jpg" width="200" />
     </a>
     <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
     <div class="an-native-body" style="margin:5px 0;">
@@ -595,33 +400,33 @@ var parseJsTrackers &#x3D; function(str) {
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
+                    <textarea class='native-gallery-code-block' readonly><script type="text/javascript">
 (function() {
-document.write(&#x27;&lt;div id&#x3D;&quot;an-demo-ad&quot;&gt;&lt;/div&gt;&#x27;);
-var stateCheck &#x3D; setInterval(function() {
-    if(document.readyState &#x3D;&#x3D;&#x3D; &#x27;complete&#x27;) {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag(&#x27;adunit&#x27;);
-            apntag.onEvent(&#x27;adAvailable&#x27;, function(adObj) {
-                var $ad &#x3D; document.getElementById(&#x27;an-demo-ad&#x27;);
-                var nObj &#x3D; adObj.native;
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nObj = adObj.native;
                 // not all native fields will be specified on the request,
                 // so make sure you trap any null values properly
-                var clickUrl &#x3D; nObj.clickUrl;
-                var title &#x3D; nObj.title;
-                var body &#x3D; nObj.body;
-                var sponsor &#x3D; nObj.sponsoredBy;
-                var imgSrc &#x3D; nObj.image &amp;&amp; nObj.image.url;
-                var cta &#x3D; nObj.cta;
-                var iconSrc &#x3D; nObj.icon &amp;&amp; nObj.icon.url;
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML &#x3D; &#x27;&lt;div class&#x3D;&quot;an-native-ad stacked&quot; style&#x3D;&quot;display:block;max-width:200px;&quot;&gt;&lt;a href&#x3D;&quot;&amp;#x27;+clickUrl+&amp;#x27;&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;img class&#x3D;&quot;an-native-img&quot; src&#x3D;&quot;&amp;#x27;+imgSrc+&amp;#x27;&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;150&quot; /&gt;&lt;/a&gt;&lt;header class&#x3D;&quot;an-native-headline&quot; style&#x3D;&quot;font-weight:bold;font-size:1.3em;&quot;&gt;&amp;#x27;+title+&amp;#x27;&lt;/header&gt;&lt;div class&#x3D;&quot;an-native-body&quot; style&#x3D;&quot;margin:5px 0;&quot;&gt;&amp;#x27;+body+&amp;#x27;&lt;/div&gt;&lt;div class&#x3D;&quot;an-native-sponsor-wrapper&quot; style&#x3D;&quot;font-size:0.8em;&quot;&gt;&lt;span class&#x3D;&quot;an-native-sponsor-label&quot; style&#x3D;&quot;font-weight:bold;&quot;&gt;Sponsored by:&lt;/span&gt; &lt;span class&#x3D;&quot;an-native-sponsor&quot;&gt;&amp;#x27;+sponsor+&amp;#x27;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+                $ad.innerHTML = '<div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>';
 
                 // collect and fire off the trackers
-                var impTrackers &#x3D; nObj.impressionTrackers || [];
-                var jsTrackers &#x3D; parseJsTrackers(nObj.javascriptTrackers) || [];
-                var clickTrackers &#x3D; nObj.clickTrackers;
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
                 impTrackers.forEach(fireRequest);
@@ -629,22 +434,22 @@ var stateCheck &#x3D; setInterval(function() {
                 // fire js trackers
                 jsTrackers
                     .filter(function(url) {
-                        // this is where you would filter out tracker that you don&#x27;t want to fire
+                        // this is where you would filter out tracker that you don't want to fire
                         // for example, this will only include moat trackers:
-                        // return url.indexOf(&#x27;//z.moatads.com&#x27;) &gt; -1;
+                        // return url.indexOf('//z.moatads.com') > -1;
                         return true;
                     })
                     .forEach(function(url) {
-                        var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
-                        scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
-                        scr.src &#x3D; url;
+                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = url;
                         tar.insertBefore(scr, tar.firstChild);
                     });
 
                 // set up handlers for click trackers -
-                // this will only work if you wrap clickable elements in &lt;a&gt; tags
-                $ad.getElementsByTagName(&#x27;a&#x27;).forEach(function(tag) {
-                    tag.addEventListenter(&#x27;click&#x27;, function() {
+                // this will only work if you wrap clickable elements in <a> tags
+                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
+                    tag.addEventListener('click', function() {
                         clickTrackers.forEach(fireRequest);
                     });
                 });
@@ -652,20 +457,20 @@ var stateCheck &#x3D; setInterval(function() {
         });
     }
 }, 10);
-var fireRequest &#x3D; function(url) {
-    var request &#x3D; new XMLHttpRequest();
-    request.open(&#x27;GET&#x27;, url);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
     request.send();
 };
-var parseJsTrackers &#x3D; function(str) {
-    var urls &#x3D; [], regex &#x3D; /(?:&lt;script.+?)(?:src&#x3D;&quot;)(.+?)&quot;.*?&gt;&lt;\/script&gt;/g, result;
-    while((result &#x3D; regex.exec(str)) !&#x3D;&#x3D; null) {
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
         urls.push(result[1]);
     }
     return urls;
 }
 })();
-&lt;/script&gt;</textarea>
+</script></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>
@@ -675,7 +480,7 @@ var parseJsTrackers &#x3D; function(str) {
         <article class='native-gallery-item'>
             <h2>Headline, body, sponsor</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad stacked stacked-text" style="display:block;max-width:200px;">
+                <div class="an-native-ad stacked stacked-text" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;">
     <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
     <div class="an-native-body" style="margin:5px 0;">
         This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
@@ -687,33 +492,33 @@ var parseJsTrackers &#x3D; function(str) {
             </section>
             <section class='native-gallery-code-section'>
                 <div class='native-gallery-code-snippet'>
-                    <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
+                    <textarea class='native-gallery-code-block' readonly><script type="text/javascript">
 (function() {
-document.write(&#x27;&lt;div id&#x3D;&quot;an-demo-ad&quot;&gt;&lt;/div&gt;&#x27;);
-var stateCheck &#x3D; setInterval(function() {
-    if(document.readyState &#x3D;&#x3D;&#x3D; &#x27;complete&#x27;) {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag(&#x27;adunit&#x27;);
-            apntag.onEvent(&#x27;adAvailable&#x27;, function(adObj) {
-                var $ad &#x3D; document.getElementById(&#x27;an-demo-ad&#x27;);
-                var nObj &#x3D; adObj.native;
+            apntag.showTag('adunit');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nObj = adObj.native;
                 // not all native fields will be specified on the request,
                 // so make sure you trap any null values properly
-                var clickUrl &#x3D; nObj.clickUrl;
-                var title &#x3D; nObj.title;
-                var body &#x3D; nObj.body;
-                var sponsor &#x3D; nObj.sponsoredBy;
-                var imgSrc &#x3D; nObj.image &amp;&amp; nObj.image.url;
-                var cta &#x3D; nObj.cta;
-                var iconSrc &#x3D; nObj.icon &amp;&amp; nObj.icon.url;
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML &#x3D; &#x27;&lt;div class&#x3D;&quot;an-native-ad stacked stacked-text&quot; style&#x3D;&quot;display:block;max-width:200px;&quot;&gt;&lt;header class&#x3D;&quot;an-native-headline&quot; style&#x3D;&quot;font-weight:bold;font-size:1.3em;&quot;&gt;&amp;#x27;+title+&amp;#x27;&lt;/header&gt;&lt;div class&#x3D;&quot;an-native-body&quot; style&#x3D;&quot;margin:5px 0;&quot;&gt;&amp;#x27;+body+&amp;#x27;&lt;/div&gt;&lt;div class&#x3D;&quot;an-native-sponsor-wrapper&quot; style&#x3D;&quot;font-size:0.8em;&quot;&gt;&lt;span class&#x3D;&quot;an-native-sponsor-label&quot; style&#x3D;&quot;font-weight:bold;&quot;&gt;Sponsored by:&lt;/span&gt; &lt;span class&#x3D;&quot;an-native-sponsor&quot;&gt;&amp;#x27;+sponsor+&amp;#x27;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+                $ad.innerHTML = '<div class="an-native-ad stacked stacked-text" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>';
 
                 // collect and fire off the trackers
-                var impTrackers &#x3D; nObj.impressionTrackers || [];
-                var jsTrackers &#x3D; parseJsTrackers(nObj.javascriptTrackers) || [];
-                var clickTrackers &#x3D; nObj.clickTrackers;
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
                 impTrackers.forEach(fireRequest);
@@ -721,22 +526,22 @@ var stateCheck &#x3D; setInterval(function() {
                 // fire js trackers
                 jsTrackers
                     .filter(function(url) {
-                        // this is where you would filter out tracker that you don&#x27;t want to fire
+                        // this is where you would filter out tracker that you don't want to fire
                         // for example, this will only include moat trackers:
-                        // return url.indexOf(&#x27;//z.moatads.com&#x27;) &gt; -1;
+                        // return url.indexOf('//z.moatads.com') > -1;
                         return true;
                     })
                     .forEach(function(url) {
-                        var d &#x3D; document, scr &#x3D; d.createElement(&#x27;script&#x27;), pro &#x3D; d.location.protocol, tar &#x3D; d.getElementsByTagName(&quot;head&quot;)[0];
-                        scr.type &#x3D; &#x27;text/javascript&#x27;; scr.async &#x3D; true;
-                        scr.src &#x3D; url;
+                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = url;
                         tar.insertBefore(scr, tar.firstChild);
                     });
 
                 // set up handlers for click trackers -
-                // this will only work if you wrap clickable elements in &lt;a&gt; tags
-                $ad.getElementsByTagName(&#x27;a&#x27;).forEach(function(tag) {
-                    tag.addEventListenter(&#x27;click&#x27;, function() {
+                // this will only work if you wrap clickable elements in <a> tags
+                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
+                    tag.addEventListener('click', function() {
                         clickTrackers.forEach(fireRequest);
                     });
                 });
@@ -744,20 +549,20 @@ var stateCheck &#x3D; setInterval(function() {
         });
     }
 }, 10);
-var fireRequest &#x3D; function(url) {
-    var request &#x3D; new XMLHttpRequest();
-    request.open(&#x27;GET&#x27;, url);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
     request.send();
 };
-var parseJsTrackers &#x3D; function(str) {
-    var urls &#x3D; [], regex &#x3D; /(?:&lt;script.+?)(?:src&#x3D;&quot;)(.+?)&quot;.*?&gt;&lt;\/script&gt;/g, result;
-    while((result &#x3D; regex.exec(str)) !&#x3D;&#x3D; null) {
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
         urls.push(result[1]);
     }
     return urls;
 }
 })();
-&lt;/script&gt;</textarea>
+</script></textarea>
                     <button class='native-gallery-copy-btn' type='button' title='Click to copy to your clipboard'>
                         Copy
                     </button>

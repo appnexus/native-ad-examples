@@ -45,8 +45,8 @@ var stateCheck = setInterval(function() {
 
                 // set up handlers for click trackers -
                 // this will only work if you wrap clickable elements in <a> tags
-                $ad.getElementsByTagName('a').forEach(function(tag) {
-                    tag.addEventListenter('click', function() {
+                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
+                    tag.addEventListener('click', function() {
                         clickTrackers.forEach(fireRequest);
                     });
                 });
