@@ -230,30 +230,33 @@ var stateCheck = setInterval(function() {
                 var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
-                impTrackers.forEach(fireRequest);
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
 
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don't want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf('//z.moatads.com') > -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
                         scr.type = 'text/javascript'; scr.async = true;
-                        scr.src = url;
+                        scr.src = jsTrackers[i];
                         tar.insertBefore(scr, tar.firstChild);
-                    });
+                    }
+                }
 
                 // set up handlers for click trackers -
                 // this will only work if you wrap clickable elements in <a> tags
-                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        clickTrackers.forEach(fireRequest);
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[i]);
+                        }
                     });
-                });
+                }
             });
         });
     }
@@ -287,7 +290,7 @@ var parseJsTrackers = function(str) {
         <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;">
             <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
         </div>
-        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
+        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title=Buy me Bonestorm! style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
             Buy me Bonestorm!
         </a>
         <img class="an-native-logo" src="./assets/logo.png" width="50" style="position:absolute;bottom:3px;right:3px;" />
@@ -326,7 +329,7 @@ var stateCheck = setInterval(function() {
                 var cta = nObj.cta;
                 var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML = '<div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;"><div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><a href="&#x27;+clickUrl+&#x27;" class="an-native-cta" target="_blank" title="...or go to hell!" style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">&#x27;+cta+&#x27;</a><img class="an-native-logo" src="&#x27;+iconSrc+&#x27;" width="50" style="position:absolute;bottom:3px;right:3px;" /></div><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="320" /></div><style>.an-native-overlay-content .an-native-cta {opacity: 0.7;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}</style>';
+                $ad.innerHTML = '<div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;"><div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><a href="&#x27;+clickUrl+&#x27;" class="an-native-cta" target="_blank" title=&#x27;+cta+&#x27; style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">&#x27;+cta+&#x27;</a><img class="an-native-logo" src="&#x27;+iconSrc+&#x27;" width="50" style="position:absolute;bottom:3px;right:3px;" /></div><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="320" /></div><style>.an-native-overlay-content .an-native-cta {opacity: 0.7;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}</style>';
 
                 // collect and fire off the trackers
                 var impTrackers = nObj.impressionTrackers || [];
@@ -334,30 +337,33 @@ var stateCheck = setInterval(function() {
                 var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
-                impTrackers.forEach(fireRequest);
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
 
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don't want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf('//z.moatads.com') > -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
                         scr.type = 'text/javascript'; scr.async = true;
-                        scr.src = url;
+                        scr.src = jsTrackers[i];
                         tar.insertBefore(scr, tar.firstChild);
-                    });
+                    }
+                }
 
                 // set up handlers for click trackers -
                 // this will only work if you wrap clickable elements in <a> tags
-                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        clickTrackers.forEach(fireRequest);
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[i]);
+                        }
                     });
-                });
+                }
             });
         });
     }
@@ -429,30 +435,33 @@ var stateCheck = setInterval(function() {
                 var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
-                impTrackers.forEach(fireRequest);
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
 
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don't want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf('//z.moatads.com') > -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
                         scr.type = 'text/javascript'; scr.async = true;
-                        scr.src = url;
+                        scr.src = jsTrackers[i];
                         tar.insertBefore(scr, tar.firstChild);
-                    });
+                    }
+                }
 
                 // set up handlers for click trackers -
                 // this will only work if you wrap clickable elements in <a> tags
-                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        clickTrackers.forEach(fireRequest);
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[i]);
+                        }
                     });
-                });
+                }
             });
         });
     }
@@ -521,30 +530,33 @@ var stateCheck = setInterval(function() {
                 var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
-                impTrackers.forEach(fireRequest);
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
 
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don't want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf('//z.moatads.com') > -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
                         scr.type = 'text/javascript'; scr.async = true;
-                        scr.src = url;
+                        scr.src = jsTrackers[i];
                         tar.insertBefore(scr, tar.firstChild);
-                    });
+                    }
+                }
 
                 // set up handlers for click trackers -
                 // this will only work if you wrap clickable elements in <a> tags
-                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        clickTrackers.forEach(fireRequest);
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[i]);
+                        }
                     });
-                });
+                }
             });
         });
     }

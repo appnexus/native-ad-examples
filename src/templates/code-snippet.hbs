@@ -26,30 +26,33 @@ var stateCheck = setInterval(function() {
                 var clickTrackers = nObj.clickTrackers;
 
                 // fire imp trackers
-                impTrackers.forEach(fireRequest);
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
 
-                // fire js trackers
-                jsTrackers
-                    .filter(function(url) {
-                        // this is where you would filter out tracker that you don't want to fire
-                        // for example, this will only include moat trackers:
-                        // return url.indexOf('//z.moatads.com') > -1;
-                        return true;
-                    })
-                    .forEach(function(url) {
-                        var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
                         scr.type = 'text/javascript'; scr.async = true;
-                        scr.src = url;
+                        scr.src = jsTrackers[i];
                         tar.insertBefore(scr, tar.firstChild);
-                    });
+                    }
+                }
 
                 // set up handlers for click trackers -
                 // this will only work if you wrap clickable elements in <a> tags
-                Array.prototype.slice.apply($ad.getElementsByTagName('a')).forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        clickTrackers.forEach(fireRequest);
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[j]);
+                        }
                     });
-                });
+                }
             });
         });
     }
