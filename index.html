@@ -21,11 +21,15 @@
             }
 
             footer {
-                margin: 5px 0;
+                margin: 0 0 20px 0;
+                text-align: center;
+                font-size: 0.8em;
+                font-style: italic;
+                color: #999;
             }
 
             .page-header {
-                padding: 55px;
+                padding: 45px 0 25px 0;
             }
 
             .page-header h1 {
@@ -37,8 +41,8 @@
             }
 
             .intro {
-                border-bottom: 1px solid #999;
-                padding-bottom: 34px;
+                border-bottom: 1px solid #d4d4d4;
+                padding-bottom: 20px;
             }
 
             .intro p {
@@ -50,14 +54,12 @@
             }
 
             .intro .code-snippet {
-                position: relative;
-                height: 200px;
             }
 
             .native-gallery-item {
-                margin: 34px 0;
-                padding-bottom: 21px;
-                border-bottom: 1px solid #999;
+                margin: 20px 0;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #d4d4d4;
                 display: flex;
                 flex-flow: row wrap;
             }
@@ -74,8 +76,7 @@
 
             .native-gallery-rendering-sample {
                 flex: 1;
-                margin-right: 8px;
-                padding: 5px;
+                padding: 5px 5px 5px 0;
             }
 
             .native-gallery-code-section {
@@ -84,38 +85,35 @@
             }
 
             .native-gallery-code-snippet {
-                position: relative;
                 flex: 1;
             }
 
             .native-gallery-code-block {
                 resize: none;
                 width: 100%;
+                height: 300px;
                 font-family: monospace;
                 font-size: 0.8em;
                 outline: none;
-                padding: 5px;
-                background: #f9f9f9;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                position: absolute;
+                background: #f0f0f0;
             }
 
             .native-gallery-copy-btn {
-                position: absolute;
-                bottom: 2px;
-                left: 2px;
-                font-size: 16px;
+                font-size: 1em;
                 padding: 3px;
                 border: 1px solid #000;
                 background-color: #eee;
                 cursor: pointer;
+                position: relative;
+                top: -30px;
             }
 
             .native-gallery-copy-btn:hover {
                 background-color: #fff;
+            }
+            
+            #haircut {
+	            margin-top: 0;
             }
 
         </style>
@@ -179,22 +177,22 @@ apntag.anq.push(function() {
                         Copy
                     </button>
                 </section>
-                <p>
+                <p id='haircut'>
                     After you have pasted this script into <span class='inline-monospace'>&lt;head&gt;</span>, paste the desired code snippet onto your page where you want it to appear - this script is self-contained and will render in-stream.
                 </p>
             </section>
         </article>
         <article class='native-gallery-item'>
-            <h2>Main image, headline, sponsor</h2>
+            <h2>Basic</h2>
             <section class='native-gallery-rendering-sample'>
                 <div class="an-native-ad img-left" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;">
-    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
+    <a href="https://www.appnexus.com" target="_blank">
         <img class="an-native-img" src="./assets/placeholder.jpg" width="200" style="float:left;margin-right:5px;"/>
     </a>
     <div class="an-native-rhs">
-        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-            <span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Build a Better Internet</header>
+        <div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;">
+            <span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">AppNexus</span>
         </div>
     </div>
 </div>
@@ -222,7 +220,7 @@ var stateCheck = setInterval(function() {
                 var cta = nObj.cta;
                 var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML = '<div class="an-native-ad img-left" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" style="float:left;margin-right:5px;"/></a><div class="an-native-rhs"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div></div>';
+                $ad.innerHTML = '<div class="an-native-ad img-left" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" style="float:left;margin-right:5px;"/></a><div class="an-native-rhs"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;"><span class="an-native-sponsor-label" style="font-weight:bold;"> Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div></div>';
 
                 // collect and fire off the trackers
                 var impTrackers = nObj.impressionTrackers || [];
@@ -253,7 +251,7 @@ var stateCheck = setInterval(function() {
                 for(var i = 0; i < $clickable.length; i++) {
                     $clickable[i].addEventListener('click', function() {
                         for(var j = 0; j < clickTrackers.length; j++) {
-                            fireRequest(clickTrackers[i]);
+                            fireRequest(clickTrackers[j]);
                         }
                     });
                 }
@@ -282,24 +280,24 @@ var parseJsTrackers = function(str) {
             </section>
         </article>
         <article class='native-gallery-item'>
-            <h2>Main image, headline, logo, call to action, sponsor</h2>
+            <h2>Overlay</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;">
+                <div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;margin-bottom:5px;">
+	<span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">AppNexus</span>
+</div>
+<div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;">
     <div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;">
-        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">Welcome Thrillho!</header>
-        <div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;">
-            <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
-        </div>
-        <a href="https://frinkiac.com/episode/S07E11/123339" class="an-native-cta" target="_blank" title=Buy me Bonestorm! style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">
-            Buy me Bonestorm!
+        <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;bottom:35%;left:0;right:0;text-shadow:1px 1px 3px #666666;">Build a Better Internet</header>
+        <a href="https://www.appnexus.com" class="an-native-cta" target="_blank" title=Learn More style="text-decoration:none;padding:3px;color:#fff;background:#00d7c8;font-size:1.2em;border-radius:2px;position:absolute;bottom:13%;left:100px;right:100px;border:0;text-align:center;">
+            Learn More
         </a>
-        <img class="an-native-logo" src="./assets/logo.png" width="50" style="position:absolute;bottom:3px;right:3px;" />
+        <img class="an-native-logo" src="./assets/logo.png" width="50" style="position:absolute;top:5px;left:5px;width:25px;" />
     </div>
     <img class="an-native-img" src="./assets/placeholder.jpg" width="320" />
 </div>
 <style>
     .an-native-overlay-content .an-native-cta {
-        opacity: 0.7;
+        opacity: 0.9;
     }
     .an-native-overlay-content .an-native-cta:hover {
         opacity: 1.0;
@@ -329,7 +327,7 @@ var stateCheck = setInterval(function() {
                 var cta = nObj.cta;
                 var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML = '<div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;"><div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;top:13px;left:0;right:0;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="font-size:0.8em;position:absolute;bottom:3px;left:3px;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><a href="&#x27;+clickUrl+&#x27;" class="an-native-cta" target="_blank" title=&#x27;+cta+&#x27; style="text-decoration:none;padding:3px;color:#000;background:#fff;border:1px solid #000;font-size:1.2em;position:absolute;bottom:25%;left:60px;right:60px;border:0;text-align:center;">&#x27;+cta+&#x27;</a><img class="an-native-logo" src="&#x27;+iconSrc+&#x27;" width="50" style="position:absolute;bottom:3px;right:3px;" /></div><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="320" /></div><style>.an-native-overlay-content .an-native-cta {opacity: 0.7;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}</style>';
+                $ad.innerHTML = '<div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;margin-bottom:5px;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><div class="an-native-ad img-overlay" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;position:relative;"><div class="an-native-overlay-content" style="position:absolute;color:#fff;width:320px;top:0;bottom:0;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;position:absolute;text-align:center;bottom:35%;left:0;right:0;text-shadow:1px 1px 3px #666666;">&#x27;+title+&#x27;</header><a href="&#x27;+clickUrl+&#x27;" class="an-native-cta" target="_blank" title=&#x27;+cta+&#x27; style="text-decoration:none;padding:3px;color:#fff;background:#00d7c8;font-size:1.2em;border-radius:2px;position:absolute;bottom:13%;left:100px;right:100px;border:0;text-align:center;">&#x27;+cta+&#x27;</a><img class="an-native-logo" src="&#x27;+iconSrc+&#x27;" width="50" style="position:absolute;top:5px;left:5px;width:25px;" /></div><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="320" /></div><style>.an-native-overlay-content .an-native-cta {opacity: 0.9;}.an-native-overlay-content .an-native-cta:hover {opacity: 1.0;}</style>';
 
                 // collect and fire off the trackers
                 var impTrackers = nObj.impressionTrackers || [];
@@ -360,7 +358,7 @@ var stateCheck = setInterval(function() {
                 for(var i = 0; i < $clickable.length; i++) {
                     $clickable[i].addEventListener('click', function() {
                         for(var j = 0; j < clickTrackers.length; j++) {
-                            fireRequest(clickTrackers[i]);
+                            fireRequest(clickTrackers[j]);
                         }
                     });
                 }
@@ -389,18 +387,18 @@ var parseJsTrackers = function(str) {
             </section>
         </article>
         <article class='native-gallery-item'>
-            <h2>Main image, headline, body, sponsor</h2>
+            <h2>Stacked</h2>
             <section class='native-gallery-rendering-sample'>
                 <div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;">
-    <a href="https://frinkiac.com/episode/S07E11/123339" target="_blank">
+    <a href="https://www.appnexus.com" target="_blank">
         <img class="an-native-img" src="./assets/placeholder.jpg" width="200" />
     </a>
-    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Build a Better Internet</header>
     <div class="an-native-body" style="margin:5px 0;">
-        This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
+        Serve seamless native ad units on a global scale with the world&#x27;s largest, independent and open native marketplace.
     </div>
-    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
+    <div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">AppNexus</span>
     </div>
 </div>
             </section>
@@ -427,7 +425,7 @@ var stateCheck = setInterval(function() {
                 var cta = nObj.cta;
                 var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML = '<div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>';
+                $ad.innerHTML = '<div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><a href="&#x27;+clickUrl+&#x27;" target="_blank"><img class="an-native-img" src="&#x27;+imgSrc+&#x27;" width="200" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>';
 
                 // collect and fire off the trackers
                 var impTrackers = nObj.impressionTrackers || [];
@@ -458,7 +456,7 @@ var stateCheck = setInterval(function() {
                 for(var i = 0; i < $clickable.length; i++) {
                     $clickable[i].addEventListener('click', function() {
                         for(var j = 0; j < clickTrackers.length; j++) {
-                            fireRequest(clickTrackers[i]);
+                            fireRequest(clickTrackers[j]);
                         }
                     });
                 }
@@ -487,15 +485,15 @@ var parseJsTrackers = function(str) {
             </section>
         </article>
         <article class='native-gallery-item'>
-            <h2>Headline, body, sponsor</h2>
+            <h2>Text</h2>
             <section class='native-gallery-rendering-sample'>
-                <div class="an-native-ad stacked stacked-text" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;">
-    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Welcome Thrillho!</header>
-    <div class="an-native-body" style="margin:5px 0;">
-        This is great! And all I&#x27;ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it&#x27;s only a one-player game. How come it says &#x27;second player score&#x27;?
+                <div class="an-native-ad stacked stacked-text" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:400px;">
+    <header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">Build a Better Internet</header>
+    <div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;">
+        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">AppNexus</span>
     </div>
-    <div class="an-native-sponsor-wrapper" style="font-size:0.8em;">
-        <span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">Bonestorm</span>
+    <div class="an-native-body" style="margin:5px 0;">
+        Serve seamless native ad units on a global scale with the world&#x27;s largest, independent and open native marketplace.
     </div>
 </div>
             </section>
@@ -522,7 +520,7 @@ var stateCheck = setInterval(function() {
                 var cta = nObj.cta;
                 var iconSrc = nObj.icon && nObj.icon.url;
 
-                $ad.innerHTML = '<div class="an-native-ad stacked stacked-text" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div><div class="an-native-sponsor-wrapper" style="font-size:0.8em;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div></div>';
+                $ad.innerHTML = '<div class="an-native-ad stacked stacked-text" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:400px;"><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">&#x27;+title+&#x27;</header><div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">&#x27;+sponsor+&#x27;</span></div><div class="an-native-body" style="margin:5px 0;">&#x27;+body+&#x27;</div></div>';
 
                 // collect and fire off the trackers
                 var impTrackers = nObj.impressionTrackers || [];
@@ -553,7 +551,7 @@ var stateCheck = setInterval(function() {
                 for(var i = 0; i < $clickable.length; i++) {
                     $clickable[i].addEventListener('click', function() {
                         for(var j = 0; j < clickTrackers.length; j++) {
-                            fireRequest(clickTrackers[i]);
+                            fireRequest(clickTrackers[j]);
                         }
                     });
                 }

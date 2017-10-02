@@ -10,6 +10,9 @@ module.exports = {
 		stacked: {
 			'max-width': '200px',
 		},
+		'stacked-text': {
+			'max-width': '400px',	
+		},
 		imgOverlay: {
 			position: 'relative',
 		},
@@ -19,21 +22,23 @@ module.exports = {
 		'font-size': '1.3em'
 	},
 	'sponsorWrapper': {
-		'font-size': '0.8em'
+		color: '#999999',
+		'font-size': '0.8em',
+		'font-style': 'italic',
 	},
 	'sponsorLabel': {
-		'font-weight': 'bold'
+		'font-weight': 'bold',
 	},
 	'cta': {
 		'text-decoration': 'none',
 		padding: '3px',
-		color: '#000',
-		background: '#fff',
-		border: '1px solid #000',
+		color: '#fff',
+		background: '#00d7c8',
 		'font-size': '1.2em',
+		'border-radius': '2px',
 	},
 	'body': {
-		margin: '5px 0'
+		margin: '5px 0',
 	},
 
 	/* vanilla left-floated image */
@@ -53,30 +58,30 @@ module.exports = {
 			color: '#fff',
 			width: '320px',
 			top: 0,
-			bottom: 0
+			bottom: 0,
 		},
 		'logo': {
 			position: 'absolute',
-			bottom: '3px',
-			right: '3px',
+			top: '5px',
+			left: '5px',
+			width: '25px',
 		},
 		'headline': {
 			position: 'absolute',
 			'text-align': 'center',
-			top: '13px',
+			bottom: '35%',
 			left: 0,
 			right: 0,
+			'text-shadow': '1px 1px 3px #666666',
 		},
 		'sponsorWrapper': {
-			position: 'absolute',
-			bottom: '3px',
-			left: '3px',
+			'margin-bottom': '5px',
 		},
 		'cta': {
 			position: 'absolute',
-			bottom: '25%',
-			left: '60px',
-			right: '60px',
+			bottom: '13%',
+			left: '100px',
+			right: '100px',
 			border: 0,
 			'text-align': 'center',
 		}
