@@ -1,10 +1,10 @@
 module.exports = [
 	{
-		title: 'Main image, headline, sponsor',
+		title: 'Basic',
 		template: 'img-left'
 	},
 	{
-		title: 'Main image, headline, logo, call to action, sponsor',
+		title: 'Overlay',
 		template: 'img-overlay'
 	},
 	// restore once we put video into native ast responses / have time to invest in a demo presentation
@@ -17,11 +17,11 @@ module.exports = [
 	// 	template: 'video-modal'
 	// },
 	{
-		title: 'Main image, headline, body, sponsor',
+		title: 'Stacked',
 		template: 'stacked'
 	},
 	{
-		title: 'Headline, body, sponsor',
+		title: 'Text',
 		template: 'stacked-text'
 	}
 ]

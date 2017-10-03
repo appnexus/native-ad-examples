@@ -1,9 +1,9 @@
+<div class="an-native-sponsor-wrapper" {{stylr style.sponsorWrapper style.overlayContent.sponsorWrapper}}>
+	<span class="an-native-sponsor-label" {{stylr style.sponsorLabel}}>Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
+</div>
 <div class="an-native-ad img-overlay" {{stylr style.ad.root style.ad.imgOverlay}}>
     <div class="an-native-overlay-content" {{stylr style.overlayContent.root}}>
         <header class="an-native-headline" {{stylr style.headline style.overlayContent.headline}}>{{title}}</header>
-        <div class="an-native-sponsor-wrapper" {{stylr style.sponsorWrapper style.overlayContent.sponsorWrapper}}>
-            <span class="an-native-sponsor-label" {{stylr style.sponsorLabel}}>Sponsored by:</span> <span class="an-native-sponsor">{{sponsor}}</span>
-        </div>
         <a href="{{clickUrl}}" class="an-native-cta" target="_blank" title={{ctaText}} {{stylr style.cta style.overlayContent.cta}}>
             {{ctaText}}
         </a>
@@ -14,7 +14,7 @@
 <style>
     {{!-- because inline styles don't allow psuedo selections --}}
     .an-native-overlay-content .an-native-cta {
-        opacity: 0.7;
+        opacity: 0.9;
     }
     .an-native-overlay-content .an-native-cta:hover {
         opacity: 1.0;

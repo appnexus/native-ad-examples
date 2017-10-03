@@ -2,9 +2,9 @@ module.exports = {
 	imgSrc: './assets/placeholder.jpg',
 	videoSrc: './assets/sample-video.webm',
 	iconSrc: './assets/logo.png',
-	title: 'Welcome Thrillho!',
-	sponsor: 'Bonestorm',
-	body: 'This is great! And all I\'ve done is enter my name -- THRILLHOUSE. Say, cool dude, can I play too? Uh, it\'s only a one-player game. How come it says \'second player score\'?',
-	ctaText: 'Buy me Bonestorm!',
-	clickUrl: 'https://frinkiac.com/episode/S07E11/123339'
+	title: 'Build a Better Internet',
+	sponsor: 'AppNexus',
+	body: 'Serve seamless native ad units on a global scale with the world\'s largest, independent and open native marketplace.',
+	ctaText: 'Learn More',
+	clickUrl: 'https://www.appnexus.com'
 }
