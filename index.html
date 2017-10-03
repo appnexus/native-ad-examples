@@ -134,16 +134,16 @@
     </head>
     <body>
         <header class='page-header'>
-            <h1>Native Ad Gallery</h1>
+            <h1>AppNexus Native Ad Gallery</h1>
         </header>
         <article class='intro'>
             <p>
-                This is a gallery of sample native creative renderings. These samples are meant to demonstrate the flexibility of the native format and the kinds of rendering possible with an AppNexus native response payload. To the right of each sample you will find a code snippet that you can copy and paste into your content - this snippet will serve a live sample ad.
+                This is a gallery of sample native ad units. These samples demonstrate the flexibility of native and the tip of the iceberg in terms of renderings possible with an AppNexus native response payload. Next to each visual you will find a code snippet that you can copy and paste into your content. You may use this code as a foundation for building your own native ad units. Each example performs standard procedures like firing impression and click trackers as well as code to filter javascript trackers included by advertisers.
             </p>
             <section>
                 <h2>How to use the code snippets</h2>
                 <p>
-                    To use the code snippets in this gallery you will need to add the following script into the <span class='inline-monospace'>&lt;head&gt;</span> element of your page. This will ensure that the page makes the ad call to our sample native creative.
+                    Add the following AppNexus Seller Tag (AST) script into the <span class='inline-monospace'>&lt;head&gt;</span> element of your page. This ensures the page makes the ad call to our sample native creative. To learn more about AST visit the AppNexus client <a href="https://wiki.appnexus.com/x/JAUIBQ">wiki</a> (requires AppNexus login). To create an ad request that returns native responses in your AppNexus member, replace the <span class='inline-monospace'>member</span> ID in the <span class='inline-monospace'>apntag.setPageOpts</span> configuration and the <span class='inline-monospace'>tagId</span> in the <span class='inline-monospace'>apntag.defineTag</span> configuration with your respective member ID and placement ID.
                 </p>
                 <section class='code-snippet'>
                     <textarea class='native-gallery-code-block' readonly>&lt;script type&#x3D;&quot;text/javascript&quot;&gt;
@@ -191,7 +191,7 @@ apntag.anq.push(function() {
                     </button>
                 </section>
                 <p id='haircut'>
-                    After you have pasted this script into <span class='inline-monospace'>&lt;head&gt;</span>, paste the desired code snippet onto your page where you want it to appear - this script is self-contained and will render in-stream.
+                    After you have pasted this script into <span class='inline-monospace'>&lt;head&gt;</span>, paste the desired code snippet onto your page where you want it to appear&mdash;this script is self-contained and will render in-stream. Modify <span class='inline-monospace'>$ad.innerHTML</span> with your own HTML and CSS to match the look and feel of your content.
                 </p>
             </section>
         </article>
