@@ -172,7 +172,7 @@ apntag.anq.push(function() {
     apntag.defineTag({
         tagId: 12119864,
         sizes: [[1,1]],
-        targetId: &#x27;adunit&#x27;,
+        targetId: &#x27;an-demo-ad&#x27;,
         native: {
             title: {required: true, max_length: 140},
             body: {required: true, max_length: 300},
@@ -219,7 +219,7 @@ var stateCheck = setInterval(function() {
     if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag('adunit');
+            apntag.showTag('an-demo-ad');
             apntag.onEvent('adAvailable', function(adObj) {
                 var $ad = document.getElementById('an-demo-ad');
                 var nObj = adObj.native;
@@ -326,7 +326,7 @@ var stateCheck = setInterval(function() {
     if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag('adunit');
+            apntag.showTag('an-demo-ad');
             apntag.onEvent('adAvailable', function(adObj) {
                 var $ad = document.getElementById('an-demo-ad');
                 var nObj = adObj.native;
@@ -424,7 +424,7 @@ var stateCheck = setInterval(function() {
     if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag('adunit');
+            apntag.showTag('an-demo-ad');
             apntag.onEvent('adAvailable', function(adObj) {
                 var $ad = document.getElementById('an-demo-ad');
                 var nObj = adObj.native;
@@ -519,7 +519,7 @@ var stateCheck = setInterval(function() {
     if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag('adunit');
+            apntag.showTag('an-demo-ad');
             apntag.onEvent('adAvailable', function(adObj) {
                 var $ad = document.getElementById('an-demo-ad');
                 var nObj = adObj.native;
