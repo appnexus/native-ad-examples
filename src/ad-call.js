@@ -23,7 +23,7 @@ apntag.anq.push(function() {
     apntag.defineTag({
         tagId: 12119864,
         sizes: [[1,1]],
-        targetId: 'adunit',
+        targetId: 'an-demo-ad',
         native: {
             title: {required: true, max_length: 140},
             body: {required: true, max_length: 300},

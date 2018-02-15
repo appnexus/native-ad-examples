@@ -4,7 +4,7 @@ var stateCheck = setInterval(function() {
     if(document.readyState === 'complete') {
         clearInterval(stateCheck);
         apntag.anq.push(function() {
-            apntag.showTag('adunit');
+            apntag.showTag('an-demo-ad');
             apntag.onEvent('adAvailable', function(adObj) {
                 var $ad = document.getElementById('an-demo-ad');
                 var nObj = adObj.native;
